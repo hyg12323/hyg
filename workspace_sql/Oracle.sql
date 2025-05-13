@@ -19,6 +19,7 @@ from emp;
 
 select distinct job, deptno 
 from emp;
+-- 부서번호로 오름차순, 겹치면 sal 내림차순
 select ename "2름", sal 월급, 
 sal "1번", sal*12+comm  감,
 sal*12+comm 돈,
