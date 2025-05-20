@@ -972,10 +972,909 @@ from emp;
  else to_char(mgr) 
  end from emp;
  
+ --급여(salary)가 5500 이상인 직원의 이름(name)과 급여를 조회하세요.
+ 
+ 
+ select sal,ename from emp
+ where sal > 2000; 
+ 
+ 
+ --HR 부서에서 일하는 직원의 모든 정보를 조회하세요.
+ 
+ select * from emp
+ where deptno = 30;
+ --2020년 이후에 입사한 직원의 이름과 입사일(hire_date)을 조회하세요.
+ 
+ select ename,hiredate from emp
+where hiredate < to_date('80/01/01','yy-mm-dd');
+
+ 
+ --IT 부서 직원 중 급여가 6500 이상인 직원의 이름과 급여를 조회하세요
+ 
+ select ename,sal,deptno from emp
+ where sal >2000 and deptno =20;
+ 
+ --HR 또는 Sales 부서에 속한 직원 중 급여가 5000보다 큰 직원의 이름과 부서를 조회하세요.
+ select ename,deptno from emp
+ where deptno = 20 or sal > 1000;
+ 
+ --사원의 이름(ename)과 입사일(hiredate)을 YYYY-MM 형식으로 출력하세요
+ select ename,to_char(hiredate,'YYYY-MM') from emp;
+ 
+ --사원의 이름과 급여를 TO_CHAR로 천 단위 구분 쉼표(,)와 함께 출력하세요.
+ select ename,sal, to_char(sal,'99,99') from emp;
+ 
+ --입사일(hiredate)을 YYYY-MM-DD (DY) 형식으로 출력하세요.
+ 
+ select to_char(hiredate,'YYYY-MM-DD') from emp;
+ 
+ 
+ --입사일(hiredate)을 YYYY-MM-DD (DY) 형식으로 출력하세요.
+ select  to_char(hiredate,'YYYY-MM-DD (dy)') from emp;
+ 
+ --사원의 이름과 입사 월을 전체 영어 이름(Month)으로 출력하세요.
+ 
+ select ename 이름,to_char(hiredate,'Month') 달 from emp;
+  --커미션(comm)이 NULL인 경우 '0'으로 출력하고, 사원 이름과 커미션을 조회하세요.
+select ename, nvl(comm,0) from emp; 
+select ename,comm,nvl(comm,0) from emp;
+
+--NVL 함수를 사용해서 다음 조건을 만족하는 쿼리를 작성하세요:
+--커미션이 NULL이면 'No Bonus', 커미션이 있으면 'Has Bonus'라는 문자열을 보여주세요.
+
+select comm,nvl(comm,0) from emp
+where replace(nvl(comm,0),0,'0')) = 'ok';
+;
+SELECT comm, NVL(comm, 0)
+FROM emp
+WHERE REPLACE(NVL(comm, 0), 0, '') = '22';
+
+SELECT comm, NVL(comm, 0)
+FROM emp
+WHERE REPLACE(NVL(comm, 0), 0, '0') = 'ok';
+
+select comm,to_char(nvl(comm,0)) 
+from emp
+where replace(nvl(to_char(nvl(comm,0)),0,'0') = 'ok' ;
+
+
+SELECT comm, to_char(NVL(comm, 'ok')) AS comm_display
+FROM emp
+WHERE to_char(NVL(comm, 'ok')) = 'ok';
+
+select nvto_char(comm,'0') from emp;
+
+
+select nvl(comm,0),count(*),
+case 
+when nvl(comm,0) = 0 then '없음'
+else '있음'
+end as 11,count(*) from emp
+group by 
+case 
+when nvl(comm,0) = 0 then '없음'
+else '있음' end ;
+
+SELECT 
+    CASE 
+        WHEN NVL(comm, 0) = 0 THEN '없음'
+        ELSE '있음'
+    END AS comm_status,
+    COUNT(*) 
+FROM emp
+GROUP BY 
+    CASE 
+        WHEN NVL(comm, 0) = 0 THEN '없음'
+        ELSE '있음'
+    END;
+    
+    
+select 
+case 
+when nvl(comm,0) = 0 then '없음'
+else '있음'
+end,count(*) from emp
+group by 
+case 
+when nvl(comm,0) = 0 then '없음'
+else '있음'
+end ;
+
+SELECT 
+    CASE 
+        WHEN NVL(comm, 0) = 0 THEN '없음'
+        ELSE '있음'
+    END AS comm_status,
+    COUNT(*) AS 인원수
+FROM emp
+GROUP BY 
+    CASE 
+        WHEN NVL(comm, 0) = 0 THEN '없음'
+        ELSE '있음'
+    END;
+    
+    select ename,
+    case 
+    when nvl(comm,0) = 0  then '없음'
+    else  '있음'
+    end
+    from emp
+    order by  
+    case 
+    when nvl(comm,0) = 0  then '없음'
+    else  '있음'
+    end desc;
+    
+--문제 1. comm이 없음 / 있음 으로 구분하여 그룹화하고, 2명 이상인 그룹만 출력하기
+
+select count(*),
+ case 
+ when nvl(comm,0) = 0 then '없음'
+ else '있음'  end from emp
+ 
+ group by 
+ case
+ when nvl(comm,0) = 0 then '없음'
+ else '있음'end 
+having count(*) >= 2
+ order by 
+  case 
+ when nvl(comm,0) = 0 then '없음'
+ else '있음'  end desc;
+ 
+ --문제 2. 부서별 평균 월급이 2000 이상인 부서만 출력하기
+ 
+ select trunc(avg(sal)),deptno from emp
+ having avg(sal) > 2000 
+ group by deptno ;
+ 
+ -- 문제 3. 부서별 보너스(comm)가 있는 사람 수가 2명 이상인 부서만 출력
+ 
+ select deptno,comm from emp
+having comm > 0
+
+group by deptno;
+
+SELECT deptno, COUNT(*) AS 직원수
+FROM emp
+WHERE deptno >= 30 AND NVL(comm, 0) >= 0
+GROUP BY deptno;
+
+select deptno, count(*)  from emp
+having deptno >= 20 and comm >= 0
+group by deptno,comm, count(*);
+
+select deptno,count(*)  from emp
+having deptno >= 30 and  comm >= 0
+group by deptno,comm,count(*);
+
+SELECT 
+  CASE WHEN NVL(comm, 0) = 0 THEN '없음' ELSE '있음' END AS comm_status,
+  COUNT(*) AS 인원수
+FROM emp
+GROUP BY 
+  CASE WHEN NVL(comm, 0) = 0 THEN '없음' ELSE '있음' END
+HAVING COUNT(*) >= 2;
+
+
+--문제: 부서별(department) 평균 급여가 6000 이상인 부서의 이름과 평균 급여를 출력하는 SQL을 작성하세요.
+
+select  trunc(avg(sal)),deptno from emp
+group by sal, deptno 
+having trunc(avg(sal)) > 2000 and count deptno = 10;
+
+select count(deptno)from emp
+having count(deptno)3 >= 10;
+
+ 
+select deptno,avg(sal),count(deptno) from emp
+having avg(sal) >= 2000
+group by  deptno, sal;
+
+SELECT deptno, AVG(sal), COUNT(*) AS emp_count
+FROM emp
+GROUP BY deptno
+HAVING AVG(sal) >= 2000;
+
+
+select deptno, trunc(avg(sal)), count(*)
+from emp
+group by deptno
+having trunc(avg(sal)) >= 2000;
+--각 부서(deptno)별로 평균 급여(sal)를 구하시오.
+
+select deptno, trunc(avg(sal)), count(*)
+from emp
+group by deptno;
+--각 직무(job)별로 직원 수를 구하시오.
+select job,count(*) from emp
+group by job;
+--각 부서별로 총 급여(sal)의 합을 구하고, 그 결과에 별칭 total_sal을 붙이시오.
+
+select deptno,sum(sal) as total_sal from emp
+group by deptno;
+--각 직무별로 최고 급여(sal)와 최저 급여를 구하시오.
+
+select job,max(sal),min(sal) from emp
+group by job;
+--각 부서별로 직원 수(empno)와 평균 급여를 구하시오. 단, 컬럼명은 각각 emp_count, avg_sal로 지정하시오.
+
+select deptno,count(*) as emp_count,trunc(avg(sal)) as avg_sal from emp
+group by deptno;
+
+--각 부서번호와 직무(job)를 기준으로 그룹을 묶고, 해당 그룹의 직원 수를 구하시오.
+
+select job, deptno, count(*) from emp
+group by job, deptno;
+
+--부서번호(deptno)가 존재하는 모든 부서에 대해 부서번호와 해당 부서의 전체 급여 
+--합을 구하시오. 급여합에 별칭 total_salary를 붙이시오.
+
+select deptno, sum(sal) from emp
+having deptno in (10,20,30)
+group by deptno;
+
+select deptno, sum(sal) from emp
+having deptno in(10,20,30)
+group by deptno;
+--직원의 급여(sal)가 3000 이상이면 'High Salary', 3000 미만이면 
+--'Low Salary'로 출력되도록 하시오. 별칭은 salary_status로 지정하시오.
+select ename,sal,
+case 
+when sal >= 3000 then 'High Salary'
+when sal < 3000 then 'Low Salary' 
+end as salary from emp;
+--부서(deptno)가 10이면 'Head Office', 20이면 'HR Department', 30이면 'Sales
+--Department'로 표시되도록 하시오. 별칭은 department_name으로 지정하시오.
+
+select ename,deptno,
+case 
+when deptno = 10 then '11'
+when deptno = 20 then '22'
+when deptno = 30 then '33'
+end as dep
+from emp;
+
+select initcap(ename) from emp;
+
+
+select empno, ename,mgr,
+case 
+when substr(empno,1,2) <= 75 then '5555'
+when substr(empno,1,2) <= 76 then '6666'
+when substr(empno,1,2) <= 77 then '7777'
+when substr(empno,1,2) <= 78 then '8888'
+else '0000'
+end 
+from emp;
+
+select comm, ename,mgr,
+case 
+when substr(comm,1,2) <= 75 then '5555'
+when substr(comm,1,2) <= 76 then '6666'
+when substr(comm,1,2) <= 77 then '7777'
+when substr(comm,1,2) <= 78 then '8888'
+else  '0000'
+end  from emp;
+job to_char(comm)
+--각 부서번호와 직무(job)를 기준으로 그룹을 묶고, 해당 그룹의 직원 수를 구하시오
+
+select deptno,job,count(*) from emp
+group by deptno,job;
+
+
+--직무(job)**별로 직원 수와 평균 급여를 구하고,
+--직원 수가 2명 이상인 직무만 출력하시오.
+select job,trunc(avg(sal)), count(*) from emp
+group by job
+having count(*) > 2;
+
+--부서별로 급여의 합(sal)과 인원 수를 구하시오.
+--단, 급여 합이 9000 이상인 부서만 출력하시오.
+
+select select avg(sal),
+case 
+when avg(sal) >= 3000 then 'A등급'
+when avg(sal) >= 2000 then 'B등급'
+else 'C등급'
+end from emp;
+,sum(sal),count(*) from emp
+group by deptno
+having sum(sal) > 9000;
+
+--emp 테이블에서 부서별로 급여(sal) 평균 + 커미션(comm) 평균의 합을 구하고,
+--이 값이 2000 이상인 부서만 출력하시오.
+--단, comm이 NULL인 경우는 0으로 처리하시오.
+
+select deptno,trunc(avg(sal)),trunc(avg(nvl(comm,0))) from emp
+
+group by deptno
+
+having trunc(avg(sal)) + trunc(avg(nvl(comm,0))) >= 2000;
+
+--각 부서의 평균 급여를 구하고,
+--평균 급여가 3000 이상이면 'A등급',
+--2000 이상이면 'B등급',
+--그 이하는 'C등급'으로 표시하시오.
+
+
+select deptno,count(*),trunc(avg(sal)),
+case 
+when avg(sal) >= 3000 then 'A등급'
+when avg(sal) >= 2000 then 'B등급'
+else 'C등급'
+end from emp
+group by deptno;
+
+--전체 평균 급여보다 높은 급여를 받는 직원들만 조회하시오.
+-- 2073 
+select ename,sal from emp
+where sal > 2073;
+
+--부서별로 comm(커미션)의 평균을 구하되,
+--NULL은 0으로 간주하고, 평균 커미션이 100 이상인 부서만 출력하시오.
+
+select deptno,trunc(avg(nvl(comm,0))) from emp
+group by 
+deptno
+having trunc(avg(nvl(comm,0))) > 100;
+
+--직원 이름(ename)이 'S'로 시작하는 직원들의
+--이름과 직무(job)를 모두 소문자로 출력하시오.
+
+select ename,lower(job) from emp
+where ename like 'S%';
+--직원별로 근무일 수(SYSDATE - hiredate)를 구하시오.
+--근무일 수가 15000일 이상인 직원만 출력하시오.
+
+select hiredate, to_char(hiredate,'YYYY','MM','DD') from emp;
+
+select to_char(hiredate,'YYYY''MM''DD') from emp;
+SELECT ename, hiredate, TRUNC(SYSDATE - hiredate) AS days_worked
+FROM emp
+WHERE SYSDATE - hiredate >= 15000;
+
+select ename, hiredate, sysdate - hiredate
+from emp
+where sysdate - hiredate >= 15000;
+
+
+--각 부서별로 MANAGER 직무를 가진 직원 수를 구하시오.
+--단, MANAGER가 2명 이상인 부서만 출력하시오.
+
+select deptno,job,count(*) from emp
+group by deptno,job
+having job like 'SALESMAN' and count(*) >= 3;
+
+select deptno,avg(sal) from emp
+
+group by deptno;
+
+select deptno, avg(nvl(comm,0)) from emp
+
+group by deptno;
+
+--이름을 총 20자리 중 가운데 정렬
+
+select lpad(rpad(ename,12),20) from emp;
+
+  select ename from emp
+union all
+ select job from emp;
+
+select * from emp, dept
+order by empno;
+
+-- (테이블).(컬럼)특정
+
+select * from emp , dept  
+where emp.deptno = dept. deptno
+order by empno;
+
+
+select * from emp e, dept d
+where e. deptno = d. deptno
+order by empno;
+
+select e.ename, d.deptno from emp
+e, dept d 
+where e. deptno = d.deptno;
+
+select * from salgrade;
+
+select ename,sal,grade from emp e,salgrade s
+where e.sal >= s.losal and e.sal <= s.hisal;
+
+
+select e1.empno, e1.ename, e1.mgr, e2.empno, e2.ename  from emp e1,emp e2
+where e1.mgr(+) = e2.empno;
+
+select e1.empno, e1.ename, e1.mgr, e2.empno, e2.ename  from emp e1,emp e2
+where e1.mgr = e2.empno(+);
+
+
+--테이블 명바꾸면 select 안에 테이블.컬럼
+
+select * from salgrade;
+
+select empno, ename,deptno 
+from emp e join dept d using(deptno)
+where sal >= 3000;
+
+select empno, ename,e.deptno 
+from emp e join dept d on(e.deptno = d.deptno)
+where sal >= 3000;
+
+select * from emp e1 join emp e2 on(e1.mgr = e2. empno);
+
+select empno, ename,e.deptno
+from emp e join dept d on(e.deptno = d.deptno);
+
+select empno,ename, e.deptno
+from emp e,dept d
+where  d.deptno = e.deptno and sal > 2000;
+
+left outer join ;
+
+select * from
+emp e1 left outer join emp e2 on(e1.mgr = e2.empno) 
+where e1.sal > 2000;
+--1번
+select e.deptno,d.dname,e.empno,e.ename,sal 
+from emp e left outer join dept d on(e.deptno = d.deptno)
+where sal > 2000
+order by d.deptno, d.dname;
+--2
+select e.deptno,d.dname,floor(avg(e.sal)),max(e.sal),min(e.sal),count(*)
+from emp e
+left outer join dept d on e.deptno = d.deptno
+group by e.deptno,d.dname;
+
+--3번
+select e.deptno,d.dname,e.empno,e.ename,e.job,sal 
+from dept d left outer join emp e on(e.deptno = d.deptno)
+order by d.deptno,e.ename ;
+
+
+
+--4번
+select e.deptno,d.dname,e.empno,e.ename,e.job,sal 
+from dept d left outer join emp e on(e.deptno = d.deptno)
+order by d.deptno,e.empno;
+
+select e.deptno,d.dname, e.ename,e.job,e.sal from 
+left emp e outer join dept d on(e.deptno = d.deptno)
+;
+select e.deptno,d.dname,e.empno,e.ename, e.job,e.sal from 
+emp e left outer join dept d on(e.deptno = d.deptno)
+;
+select e.deptno,d.dname,e.empno,e.ename,e.mgr,e.sal from
+emp e left outer join dept d on (e.mgr = e.deptno);
+
+select d.deptno,d.dname,e.empno,e.ename, e.job,e.sal from 
+emp e left outer join on(e.deptno = d.deptno);
+
+select d.deptno,d.dname,e.empno,e.ename,e.job,e.sal
+    from dept d
+    left outer join emp e  on (e.deptno = d.deptno)
+
+    ;
+    
+ select d.deptno,d.dname,e.empno,e.ename,e.mgr,e.sal from
+dept d left outer join emp e on (e.mgr = e.deptno);
+
+
+select e.deptno,d.dname,e.ename,e.mgr,e.sal,d.deptno,s.losal,s.hisal,s.grade,
+e.empno mgr_empno,e.ename mgr_ename 
+from
+dept d left outer join emp e on(e.deptno = d.deptno) 
+left outer join salgrade s on (s.grade < e.sal)
+where e.sal >= s.losal and e.sal <= s.hisal
+ ;
+select * from salgrade;
+
+select d.deptno,d.dname,e.empno,e.ename,e.job,e.sal,
+e.deptno,s.losal,s.hisal,s.grade,e.mgr MGR_EMPNO,e.ename MGR_ENAME
+from
+dept d left outer join emp e on(e.mgr = e.empno) ;
+ 
+
+
+select d.deptno,d.dname,e.empno,e.ename,e.job,e.sal,
+e.deptno,s.losal,s.hisal,s.grade,e.mgr MGR_EMPNO,e.ename MGR_ENAME
+from 
+dept d left outer join emp e on(e.deptno = d.deptno)
+where e.sal > losal;
+
+
+
+
+select d.deptno,d.dname,e.empno,e.ename,e.mgr,e.sal,
+e.deptno,s.losal,s.hisal,s.grade,m.empno MGR_EMPNO,m.ename MGR_ENAME
+from 
+dept d left outer join emp e on e.deptno = d.deptno
+left outer join salgrade s on e.sal >= s.losal and e.sal <= s.hisal
+left outer join emp m on e.mgr = m.empno
+order by e.deptno,e.empno;
+
+select d.deptno,d.dname,e.empno,e.ename,e.mgr,e.sal,
+e.deptno,s.losal,s.hisal,s.grade,m.empno MGR_EMPNO,m.ename MGR_ENAME
+from 
+dept d left outer join emp e on e.deptno = d.deptno
+
+left outer join salgrade s on e.sal > s.losal and e.sal < s.hisal
+left outer join emp m on e.mgr = m.empno
+order by e.deptno,e.empno
+;
+
+select * from dept;
+
+select
+ d.deptno,d.dname,e.empno, e.ename,e.mgr, e.sal,e.deptno,
+ s.losal,s.hisal,s.grade, c.empno mgr_empno,c.ename mgr_ename
+ from dept d
+ left outer join  emp e on e.deptno = d.deptno
+ left outer join  salgrade s on e.sal >= s. losal and e.sal <= s.hisal
+ left outer join  emp c on e.mgr = c.empno
+ order by e.deptno,e.empno;
+ 
+ 
+ select d.deptno,d.dname,e.empno,e.ename,e.mgr,e.sal,
+e.deptno,s.losal,s.hisal,s.grade,m.empno MGR_EMPNO,m.ename MGR_ENAME
+from 
+dept d left outer join emp e on e.deptno = d.deptno
+left outer join salgrade s on e.sal >= s.losal and e.sal <= s.hisal
+left outer join emp m on e.mgr = m.empno
+order by e.deptno,e.empno;
+
+
+select * from emp 
+where 
+sal > (select sal from emp where ename = 'JONES');;
+
+select * from emp
+where hiredate < (select hiredate from emp 
+                  where ename = 'SCOTT');
+
+
+
+
+
+--EMP 부서의 평균보다 많이 받는사람을 뽑아보자
+
+select * from emp
+where sal > (select avg(sal) from emp);           
+
+select * from emp
+where sal in (select max(sal) from emp 
+group by deptno);
+                  
+    
+
+
+select * 
+from emp
+where sal 
+in (select max(sal)
+from emp 
+group by deptno )
+;
+
+select * 
+from emp;
+select *
+from emp,dept
+where emp.deptno = dept.deptno;
+
+select e10.empno, e10.ename, e10.deptno, d.dname,d.loc
+            -- 이 *사이에 원본기준으로 
+from ( select * from emp where deptno = 10) e10,
+    ( select * from dept) d
+    where e10.deptno = d.deptno;
+
+
+
+--직책 별로 3명이상 있는사람만 구하시오
+
+
+select job, count(*)
+from emp 
+group by job
+having count(*) >= 3;
+
+
+select job, count(*)
+from emp 
+group by job;
+
+
+
+
+
+select e.deptno,e.empno,e.ename,e.mgr,e.sal,d.deptno,s.losal,s.hisal,s.grade,
+      c.empno,c.ename from dept d
+      left outer join emp e on e.deptno = d.deptno
+      left outer join salgrade s on e.sal >= s.losal and sal <= s.hisal
+      left outer join emp c on e.mgr = c.empno
+      order by e.deptno, e. empno;
+      
+   /*   각 직원의 다음 정보를 모두 출력하는 쿼리를 작성하세요:
+
+직원 사번, 이름, 직무, 급여
+
+부서명과 부서 위치
+
+해당 직원의 급여 등급 (salgrade 기준)
+
+상사의 이름 (emp 테이블에서 상사 정보 추출) */
+
+
+select 
+e.mgr,e.empno,e.ename,e.job,e.sal,e.deptno,b.dname,b.loc,c.grade,f.empno, f.ename
+from emp e
+left outer join dept b on e.deptno = b.deptno
+left outer join salgrade c on e.sal >=  c.losal and e.sal <= c.hisal
+left outer join emp f on f.empno = e.mgr
+;
+
+--각 직원의 정보와 상사의 이름, 부서명, 부서위치, 급여 등급을 포함한 결과를 조회하세요.
+
+select e.ename,c.enaem,;
+
+--급여 등급이 3 이상인 직원만 조회한다.
+
+--각 직원의 이름, 직무, 급여, 부서명, 급여 등급, 상사의 이름을 출력한다.
+--
+--부서명이 SALES인 직원은 제외한다.
+--
+--상사가 없는 직원도 포함되어야 한다.
+--
+--결과는 급여 등급 내림차순, 직원 이름 오름차순으로 정렬한다
+
+select e.ename,e.job,e.sal,d.dname,s.grade,d.dname,m.ename,s.losal,s.hisal from
+emp e 
+left outer join salgrade s on s.grade >= 3
+left outer join dept d on e.deptno = d. deptno
+left outer join emp m on m.empno = e.mgr
+where d.dname != 'SALES' and e.sal >= losal and e.sal <=hisal
+order by e.sal,e.ename desc;
+
+select e.deptno,d.dname,trunc(avg(e.sal)),max(e.sal),min(e.sal),count(*)
+from emp e
+left outer join dept d on e.deptno = d.deptno
+group by e.deptno,d.dname;
+
+select d.deptno,d.dname,e.empno,e.ename,e.job,e.sal
+from dept d 
+left outer join emp e on d.deptno = e.deptno
+order by d.deptno,e.ename
+;
+select e.empno,e.ename,e.job,e.mgr,e.sal,d.deptno
+from emp e
+left outer join dept d on e.deptno = d.deptno;
+
+select e.ename,e.job,e.sal,d.dname,d.loc,s.losal,s.hisal,m.ename
+from dept d
+left outer join emp e on e.deptno = d.deptno
+left outer join salgrade s on e.sal >= losal and sal <= hisal
+left outer join emp m on e.mgr = m.empno
+where s.grade >= 2 and d.loc in('DALLAS','CHICAGO')
+order by s.grade,e.sal desc;
+
+select e.ename,e.job,e.sal,d.dname,d.loc,s.grade,m.ename 상사
+from dept d 
+left outer join emp e on e.deptno = d.deptno
+left outer join salgrade s on e.sal >= s.losal and e.sal <= s.hisal
+left outer join emp m on e.mgr = m.empno
+where e.sal >= 1500 and  e.sal <= 3000
+order by e.sal, e.ename desc;
+
+
+select e.ename,e.sal,c.grade,c.losal,c.hisal
+from salgrade c 
+left outer join emp e on e.sal >= losal and e.sal <= hisal;
+
+select d.dname,ename,e.sal,c.grade,c.losal,c.hisal
+from dept d 
+left outer join emp e on e.deptno = d.deptno
+left outer join salgrade c on e.sal >= losal and e.sal <= hisal
+where d.dname like  'SALES'  ;
+
+-- 퀴즈 
+-- 각부서별로 급여가
+ -- 가장높은사원, 가장 낮은 사원의 급여 차이를 가져와이새끼야
+ 
+ select deptno,max(sal), min(sal), max(sal) - min(sal) from 
+emp 
+group by deptno;
+
+--전체 길이의 반 - 글씨 길이의 반
+select lpad(rpad(job,20/2),20) from emp;
+
+select lpad(rpad(job,10),20) from emp;
+
+
+select lpad(job,length(job)/2+ 20/2,'-')
+
+     rpad(lpad(job,length(job)/2+20/2),'-'),20,'-')
+     from emp;
+     
+     
+     
+     
+     
+     
+     
+     
+     
+ --직책 별로 3명이상 있는사람만 구하시오
+
+
+select job, count(*)
+from emp 
+group by job
+having count(*) >= 3;
+
+select *
+from (
+select job, count(*) cnt
+from emp 
+group by job)
+ where cnt  >= 3; 
+ 
+ 
+ --책에 안나오는내용
+ select * from(
+ select rownum rn , emp.*
+ from emp)
+ where rn > 3 and rn < 6;
  
  
  
+ -- 연봉순으로 정렬된 2번3번을 뽑아주시오
+ 
+ -- select 문이 마지막에 실행되기에 새로 감싸 원래있던 select 문을 또 감싸서 순서
+ -- 를 빨리 실행시킴
+ select * from (
+ select rownum rn,e.*  --1번
+ from (
+ select emp.*        
+ from emp
+ order by sal desc)
+ e ) 
+ where rn >= 2 and rn <= 4
+ ;
+ 
+ with e10 as( 
+ select * from emp where deptno = 10)
+ 
+ select ename from e10;
+ 
+
+ select rownum rn,e.*
+ from (
+ select emp.*
+ from emp
+
+ order by sal desc)
+ where rn >= 2 or rn <= 3
+ e 
+ ;
  
  
  
+ --247페이지 참조
+ select * from emp e1 
+ where sal >(select min(sal)
+  from emp e2 
+  where e2.deptno = e1.deptno)
+  order by deptno, sal;
+  
+  select empno, ename, job, sal,
+        (select grade 
+          from salgrade
+          where e.sal between losal and hisal)as salgarde,
+          deptno,
+          (select dname from dept 
+          where e. deptno = dept.deptno) as dname
+          from emp e;
+        
+        
+select e.job,e.empno,e.ename,e.sal,d.deptno,d.dname
+  from emp e left outer join dept d on e.deptno = d.deptno
+  where e.job like 'SALESMAN';
+  
+  
+ select e.job, e.empno, e.ename,e.sal,d.deptno,d.dname 
+ from emp e,dept d
+   where e.deptno = d.deptno and e.job =
+      (select e.job from emp 
+      where ename = 'ALLEN');
+    
+
+SELECT e.job, e.empno, e.ename, e.sal, d.deptno, d.dname 
+FROM emp e, dept d
+WHERE e.deptno = d.deptno 
+  AND e.job = ( SELECT job 
+      FROM emp 
+      WHERE ename = 'ALLEN'
+  ) 
+  
+SELECT job 
+      FROM emp 
+      WHERE ename = 'ALLEN';
+    
+
+
+
+
+
+
+
+
+
+
+select e.job,e.ename,e.sal,e.deptno,d.dname
+from emp e,dept d
+where e.deptno = d.deptno
+and e.job =
+(select job from emp
+where ename = 'ALLEN')
+
+
+
+
+
+
+
+
+
+
+
+
+-- 전체사원 평균 급여 보다 많이 받는 사원의 사원정보, 부서 정보 ,급여등급 정보를 출력하는
+--sql 구문을 작성하시오
+;
+select e.empno,e.ename,d.dname,e.hiredate,d.dept,e.sal,s.grade from
+emp e, dept d, salgrade c
+    select sal from emp
+    where e.deptno = d.deptno and
+    where e.sal 
+    avg(sal) > (select avg(sal) from emp 
+          )as dd;
+          
+ SELECT e.empno, e.ename, e.hiredate, e.deptno, e.sal, s.grade, d.dname
+FROM emp e, dept d, salgrade s
+WHERE e.deptno = d.deptno
+  AND e.sal >= s.losal
+  AND e.sal <= s.hisal
+  AND e.sal > (SELECT AVG(sal) FROM emp)  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  ;
+  select e.empno,e.ename,e.job,e.deptno,d.dname,d.loc
+  from emp e, dept d 
+  where e.deptno = 10 and job (select deptno from emp where job    
+      
+  
+  
+  
+  
   
