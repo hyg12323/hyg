@@ -2186,4 +2186,70 @@ update emp_test
 set salary =  6000
 where tid = 101
 ;
-select * from emp_test  ;     
+select * from emp_test ;
+
+alter table emp_test
+add department varchar2(50)
+;
+update emp_test
+set department = '            집'
+where tid = 101
+
+;
+alter table emp_test
+rename column 사는곳 to         사는곳1;
+
+alter table emp_test
+;
+drop table emp_test ;
+
+
+create table coc
+as select * from emp
+where 1 != 1;
+
+select * from coc
+
+;
+insert into coc (empno,ename,job,mgr)
+values (1111,'hyg','무직',1123); 
+
+update coc
+set mgr = null
+where empno =1111
+;
+
+delete coc; 
+
+drop table co
+;
+alter table coc 
+rename  cll;
+
+rename coc to c__;
+
+
+create table coc
+as
+select deptno from emp 
+where deptno = 10;
+
+alter table c__
+rename column deptno to cc1;
+
+select * from c__
+;
+drop table test;
+
+
+create table coc
+as select * from emp
+
+;
+select * from coc
+;
+insert into coc (empno,ename,job)
+values (8000,'hyg',null)
+;
+delete coc 
+where empno = 8000;
