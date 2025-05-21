@@ -1820,6 +1820,7 @@ where e.deptno = d.deptno
 and e.job =
 (select job from emp
 where ename = 'ALLEN')
+order by e.sal desc, e.ename 
 
 
 
@@ -1875,33 +1876,28 @@ where e.deptno = d.deptno
     and e.deptno = d.deptno  ;
 
 
+
+--where 절로 푼거
 select e.empno,e.ename,e.sal,c.grade
 from emp e, salgrade c
 where e.sal > (select max(sal) from emp  where job like 'SALESMAN' ) 
 and e.sal <= c.hisal 
 and e.sal >= c.losal 
+order by empno
 ;
-select * from salgrade
 
-
-
-
-;
-select ename,avg(sal) - sal from emp
-group by ename,sal;
-
-
-
-
-
-
-
-
+--select 절로 푼거
 select e.empno,e.ename,d.dname,e.hiredate,d.loc,e.sal,
 (select grade from salgrade where sal >= losal and  sal <= hisal ) as11 from emp e,dept d 
   where sal > (select avg(sal) from emp)
   and e.deptno = d.deptno
+ order by sal desc
   ;
+  
+  -----------------------
+  desc emp;
+  
+  select * from comm
     
 
 
@@ -1916,6 +1912,278 @@ select e.empno,e.ename,e.sal,c.grade
 from emp e, salgrade c
 where e.sal > (select max(sal) from emp where job like 'SALESMAN')
 and e.sal >= losal
-and e.sal <= hisal
+and e.sal <= hisal;
 
 
+select e.ename,e.sal,c.grade,
+(select grade from salgrade where sal > losal and sal < hisal) ss1
+from emp e, salgrade c
+where c.grade > 3
+
+
+-- 1번 커미션이 null인 사원을 급여 오름차순으로 정렬
+
+-- 2번 급여 등급 별 사원 수를 등급 오름차순으로 정렬
+        --(모든 등급을 표시한다)
+--3번 이름, 급여, 급여등급,부서이름 조회
+-- 단, 급여등급 3이상만 조회. 급여등급 내림차순, 급여등급이 같은경우 급여 내림차순
+--4번  부서명이 SALES인 사원 중 급여 등급이 2 또는 3인 사원을 급여 내림차순으로 정렬
+
+;--1번
+select ename,comm,sal from emp
+ where comm is null 
+ order by sal ;
+ 
+ 
+ --2번 
+ select e.ename, c.grade,count(*) from emp e, salgrade c
+  group by e.ename,c.grade, c.losal, e.sal, c.hisal
+  having  e.sal >= c.losal and e.sal <= c.hisal ;
+  
+  
+  select s.grade,count(*) from emp e, salgrade s
+  where e.sal >= s.losal and e.sal <= s.hisal
+  group by s.grade
+  order by s.grade;
+  
+  -- 2번 급여 등급 별 사원 수를 등급 오름차순으로 정렬
+        --(모든 등급을 표시한다)
+  
+   select  ename,sal,grade from emp,salgrade c
+    (select grade,count(*) from salgrade group by grade) 
+               where sal >= losal and sal <= hisal 
+        ;
+     
+--3번 번 이름, 급여, 급여등급,부서이름 조회
+
+
+select e.ename,e.sal,c.grade,d.dname
+       from emp e,dept d,salgrade c
+       where e.deptno = d.deptno and e.sal >= losal and e.sal <= hisal
+       and c.grade >= 3     
+       order by c.grade desc ,e.sal desc
+       
+
+-- 단, 급여등급 3이상만 조회. 급여등급 내림차순, 급여등급이 같은경우 급여 내림차순
+--4번  부서명이 SALES인 사원 중 급여 등급이 2 또는 3인 사원을 급여 내림차순으로 정렬
+ 
+   ;
+ select e.ename,d.dname,c.grade from emp e, dept d, salgrade c
+ where d.dname = 'SALES' and e.sal >= losal and e.sal <= hisal 
+ and d.deptno = e.deptno and c.grade in (2,3) 
+ order by c.grade 
+ ;
+ 
+ desc from;
+ 
+ 
+ create table emp_ddl (
+               empno number(4),
+               ename varchar2(10),
+               job  varchar2(9),
+               mgr number(4),
+               hiredate date,
+               sal number (7,2),
+               comm number (7,2),
+               deptno number (2)
+               );
+               desc emp_ddl;
+    
+            select * from emp_ddl
+        
+        ;
+        create table dept_ddl
+        as select * from dept;
+        
+        desc dept_ddl;
+        
+        select * from dept_ddl
+        
+        ;
+        create table emp_ddl_30
+        as select * from emp 
+        where deptno = 30;
+        
+        select * from emp_ddl_30;
+        
+        create table empdept_ddl
+        as select e.empno,e.ename,e.job,e.mgr,e.hiredate,e.sal,e.comm,
+                  d.deptno, d.dname,d.loc
+                  from emp e, dept d
+                  where 1 != 1;
+                  
+                  
+create table emp_alter
+as select * from emp;
+
+
+select * from emp_alter;
+
+-- hp 컬럼 추가 (글자)
+alter table emp_alter 
+ add hp varchar2(20);  -- varchar로 적으면 varchar2로 인식된다
+
+-- age 컬럼 추가 (숫자)
+alter table emp_alter 
+ add age number(3) ;
+ 
+--컬럼 이름변경
+alter table emp_alter 
+ rename column hp to te12;
+ 
+ 
+ alter table emp_alter 
+ modify empno number(5)
+--수정할 때 타입의 크기가 커지는 건 가능하지만
+-- 줄어드는 건 불가능
+;
+alter table emp_alter 
+ modify empno number(4);
+select * from emp_alter;
+
+
+alter table emp_alter
+drop column te12;
+
+
+create table emp_ww
+( empno number(4),
+ ename varchar2(10),
+ job varchar2(9),
+ mgr number(4)
+ 
+ );
+ 
+ 
+ select * from emp_rename;
+ alter table emp_ww add sal number(8);
+ 
+ rename emp_alter to emp_rename;
+
+truncate table emp_rename; 
+
+drop table emp_rename;
+
+select * from emp_rename;
+----------------------------------
+--10장
+
+create table dept_temp
+as select* from dept;
+
+insert into dept_temp (deptno, dname,loc)
+            values(50, 'DATABASE','SEOUL');
+            
+select * from dept_temp; 
+
+select *from dept_temp
+where loc like 'SEOUL';
+
+
+insert into dept_temp (deptno, dname,loc)
+            values(50, 'DATABASE','SEOUL');
+insert into dept_temp 
+            values(60, 'NETWORK','BUSAN');
+            
+            
+ insert 
+ into dept_temp
+ values (70,'WEB',null);
+
+
+ insert 
+ into dept_temp
+ values (80,'MOBILE','');
+
+
+select *from dept_temp
+;
+insert into dept_temp (deptno,loc)
+values (90,'INCHEON');
+
+
+create table emp_temp
+as select * from emp where 1 <> 1;
+
+select *from emp_temp;
+
+insert into emp_temp (empno, ename,hiredate)
+values (2111, '이순신',to_date('2025-05-21','yyyy-mm-dd'));
+
+insert into emp_temp (empno, ename,hiredate)
+values (3111,'심청이',sysdate);
+
+
+insert into emp_temp
+select * from emp where deptno = 10;
+
+create table dept_tem3;
+as select * from DEPT_tem2;
+select * from dept_tem2;
+
+update dept_tem2 
+set loc = 'SEOUL';
+
+
+select * from dept_tem2;
+
+-- update, delete의
+-- where를 무조건 select에서 검증하고 사용하
+update dept_tem2
+set dname = 'DATABASE', loc = 'SEOUL2'
+where deptno = 40;
+
+create table emp_tmp
+as select * from emp;
+-- 1번 전체 테이블
+select * from emp_tmp;
+-- 2번 검증 단계
+select * from emp_tmp
+where sal < 1000;
+-- 3번 업데이트  
+update emp_tmp
+set sal = sal*1.03
+where sal < 1000;
+0000000000
+
+create table emp_temp3
+as select * from emp;
+
+select * from emp_tamp2;
+
+
+commit;
+
+delete emp_temp3
+where deptno =10;
+
+
+rollback;
+
+
+select * from emp_temp3;
+
+
+
+create table emp_test
+     (tid varchar2(10),
+     tname  varchar2(50),
+     hiredate  date,
+     salary  number(7,2)
+     );
+     
+     
+     
+  select * from emp_test   ;
+  
+
+ insert into emp_test (tid,tname,hiredate,salary)
+                values('101','john',to_date('2022-01-15','YYYY-MM-DD'),5500.50)
+                ;
+ delete emp_test
+ ;
+update emp_test
+set salary =  6000
+where tid = 101
+;
+select * from emp_test  ;     
