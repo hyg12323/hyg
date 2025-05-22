@@ -2253,3 +2253,330 @@ values (8000,'hyg',null)
 ;
 delete coc 
 where empno = 8000;
+
+
+select * from dict;
+
+select * from all_table
+;
+select * from user_indexes;
+
+create index idx_emp_sal 
+on emp(sal);
+
+select * from user_ind_columns
+;
+-- 인덱스를 내용이 별로없어 활용안하기에 -> 강제로 index하게하는법
+
+;
+select * /*+ index(e idx_emp_sal)     */   --강제 힌트
+from emp e
+where sal = 2000 or deptno =10; and 
+
+-- 뷰생성
+
+create view vw_emp20
+as(select empno, ename,job,deptno from emp
+where deptno = 20 );
+
+
+drop view vw_emp20;
+
+
+create sequence seq_dept
+start with 10;
+--시퀀스 숫자올라가는거 확인
+select seq_dept1.nextval
+from dual;
+
+-- 시퀀스 숫자안올라가고 확인방법
+select seq_dept1.currval 
+from dual;
+
+
+--시퀀스 삭제
+drop sequence seq_dept;
+
+insert into dept_coc (deptno, dname, loc)
+values (seq_dept.nextval, '테스트','천안');
+
+select * from user_tables;
+
+-- pk를 만들면 indexes까지 생성해줌
+create table table_pk(
+login_id varchar2(20) primary key,
+login_pwd varchar2(20) not null,
+ter varchar2(20));
+
+select * from table_pk
+;
+select * from user_indexes;
+;
+insert into table_pk
+values ('id','pw',null);
+-- 이미 존재하는거 추가
+insert into table_pk
+values ('id','pw',null);
+--null로 추가
+update table_pk
+set login_id = null
+where login_id = 'id';
+-- 이미 존재하는 것으로 변경
+update table_pk
+set login_id = 2
+where login_pwd = '11';
+
+
+select * from table_pk
+
+
+;
+create table dept_fk(
+deptno number(2) constraint deptk_deptno_pk primary key,
+dname varchar2(14),
+loc varchar2(13)
+);
+
+
+create table emp_fk(
+empno number(4) constraint pk_emp_fk primary key,
+ename varchar2(14),
+deptno number(2) constraint fk_emp_fk references dept_fk(deptno)
+);
+
+
+select * from dept_fk;
+
+insert into emp_fk
+values ( 1000, '이름',10);
+
+insert into dept_fk
+values ( 10, '이름','위치');
+
+insert into emp_fk
+values ( 1000, '이름','위치');
+
+
+update dept_fk
+set deptno = 20
+where deptno = 10;
+
+
+select * from emp_fk;
+
+
+delete dept_fk
+where deptno =20;
+
+delete emp_fk
+where deptno = 10;
+
+
+update dept_fk
+set deptno = 20
+where deptno = 10;
+
+
+
+
+create table oo
+(oname varchar2(10),
+deptno number(5),
+empno number(5) primary key,
+loc varchar2(10)
+);
+
+
+create table ee
+(oname varchar2(10),
+deptno number(5),
+empno number(5),
+loc varchar2(10),
+primary key(empno),
+foreign key (empno) references oo(empno)
+);
+
+
+insert into oo(oname,deptno,empno,loc)
+values ('김동현',1234,1,'천안');
+
+
+select * from oo
+
+;
+insert into oo(oname,deptno,empno,loc)
+values ('선더',1,1,'마나');
+
+
+update oo
+set deptno = 1, loc = '평택'
+where empno = 1;
+
+insert into oo
+values ('','3',3,'') 
+
+;
+insert into oo
+values ('지두',4,4,'모부');
+
+
+update oo
+set oname = '비미',loc = '지미';
+
+
+rollback;
+
+
+select * from oo;
+
+
+insert into oo (oname,deptno,empno,loc)
+values ('모노비',1,1,'아디')
+
+;
+alter table oo
+add 소속 varchar(10);
+
+
+alter table oo
+rename column loc to 지역;
+
+
+
+
+
+insert into oo(이름,기호,나이,지역,소속)
+values ('11',3,73,'무무','지지');
+
+insert into oo
+values ('11',3,73,'바바','미미');
+
+
+alter table oo
+modify 소속 varchar2(20);
+
+
+select * from oo;
+
+insert into oo (이름,기호)
+values (null,3);
+
+update oo
+set 기호 = 1 
+where 나이 = 63
+
+;
+insert into oo (이름,기호,나이,지역,소속)
+values ('비마',sqc_oo.nextval,sqc_oo.nextval,'만두','고생');
+
+create sequence sqc_oo
+increment by 1;
+
+-
+
+delete oo
+where 기호 > 1
+;
+drop table oo
+
+;SYS_C0033191
+
+
+alter table oo
+drop constraint SYS_C0033191
+
+;
+SELECT constraint_name,
+       constraint_type
+  FROM user_constraints
+ WHERE table_name = 'OO';
+ 
+ drop table oo
+ cascade constraints purge;
+
+--테이블 목록 전부확인
+select * from user_tables
+;
+create table oe2
+as select * from emp
+
+;
+select * from coc;
+
+drop table oe2;
+
+
+commit
+;
+alter table coc
+rename column job to co1
+;
+rename table coc  to co1\
+
+;
+alter table coc
+rename to co5;
+
+
+create index oo1 on emp(deptno)
+
+select * from 
+;
+
+SELECT index_name,
+       table_name,
+       uniqueness
+  FROM user_indexes
+ ORDER BY index_name
+ 
+ ;
+ drop index sal;
+ 
+ 
+ select e.ename,d.dname,d.loc from emp e
+ left outer join dept d on e.deptno = d.deptno;
+ 
+ select e.ename,e.sal,d.dname,c.grade from emp e
+ left outer join dept d on e.deptno = d.deptno
+ left outer join salgrade c on e.sal >= c.losal and e.sal <= c.hisal
+ 
+ ;
+select round(avg(e.sal)),e.deptno,c.grade from emp e
+left outer join salgrade c on round(avg(e.sal)) >= c.losal and round(avg(e.sal)) <= c.hisal
+
+group by e.deptno,c.grade;
+
+
+select e.deptno,c.grade,avg(e.sal) from emp e ,salgrade c 
+
+group by e.deptno, c.grade
+;
+select deptno,grade,avg(e.sal) from emp e ,salgrade c 
+         
+group by deptno,grade
+
+;
+select e.deptno,avg(e.sal),c.grade from emp e
+ left outer join salgrade c on avg(e.sal) >= losal
+
+group by e.deptno
+;
+select e.deptno,avg(e.sal),c.grade from emp e,salgrade c
+,(select avg(e.sal) from emp ) 
+group by e.deptno;
+
+
+
+select deptno,avg(sal) from 
+(select deptno, avg(sal) from emp
+
+group by deptno)e;
+
+
+select e.deptno,avg(e.sal),c.grade 
+from (select deptno,avg(sal) from emp x group by deptno)
+e
+left outer join salgrade c on x.avg(e.sal) >= c.losal and x.avg(e.sal) <= c.hisal
+
+;
+
