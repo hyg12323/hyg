@@ -2580,3 +2580,65 @@ left outer join salgrade c on x.avg(e.sal) >= c.losal and x.avg(e.sal) <= c.hisa
 
 ;
 
+
+se
+
+desc emp;
+
+
+
+CREATE TABLE 사원정보 (
+	empno	number(4)	NOT NULL,
+	ename	vachar2(10)	NULL,
+	job	vachar2(9)	NULL,
+	mgr	number(4)	NULL,
+	hiredate	date	NULL,
+	sal	number(7.2)	NULL,
+	comm	number(7.2)	NULL,
+	deptno	number(2)	NOT NULL
+);
+
+CREATE TABLE `부서정보` (
+	`부서번호`	number(2)	NOT NULL,
+	`부서명`	varchar2(14)	NULL,
+	`위치`	varchar2(13)	NULL
+);
+
+ALTER TABLE `사원정보` ADD CONSTRAINT `PK_사원정보` PRIMARY KEY (
+	`empno`
+);
+
+ALTER TABLE `부서정보` ADD CONSTRAINT `PK_부서정보` PRIMARY KEY (
+	`부서번호`
+);
+
+
+
+
+CREATE TABLE game1 (
+    게임   VARCHAR2(255),
+    가격   NUMBER(10),
+    평점    NUMBER(7,2),
+    출시일  DATE,
+    장르      VARCHAR2(40),
+    그림      VARCHAR2(40),
+    제작사   VARCHAR2(20),
+    제작사본사   VARCHAR2(20),
+    제작사창립일  DATE
+);
+
+select * from as  이름 
+where 장르_id  = 1  
+
+ 
+1000001
+
+
+장르 _id / 장르이름
+
+  walsl2    / 로맨스
+  
+  2    / sf
+  
+  
+  3  /  멜로
