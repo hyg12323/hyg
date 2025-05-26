@@ -1820,7 +1820,10 @@ where e.deptno = d.deptno
 and e.job =
 (select job from emp
 where ename = 'ALLEN')
+<<<<<<< HEAD
 order by e.sal desc, e.ename 
+=======
+>>>>>>> 91bc050d48862b62bd892a357602f1c63549e47e
 
 
 
@@ -1844,12 +1847,21 @@ emp e, dept d, salgrade c
     avg(sal) > (select avg(sal) from emp 
           )as dd;
           
+<<<<<<< HEAD
  select e.empno, e.ename, e.hiredate, e.deptno, e.sal, s.grade, d.dname
 from emp e, dept d, salgrade s
 where e.deptno = d.deptno
   and e.sal >= s.losal
   and e.sal <= s.hisal
   and e.sal > (SELECT AVG(sal) FROM emp)  
+=======
+ SELECT e.empno, e.ename, e.hiredate, e.deptno, e.sal, s.grade, d.dname
+FROM emp e, dept d, salgrade s
+WHERE e.deptno = d.deptno
+  AND e.sal >= s.losal
+  AND e.sal <= s.hisal
+  AND e.sal > (SELECT AVG(sal) FROM emp)  
+>>>>>>> 91bc050d48862b62bd892a357602f1c63549e47e
   
   
   
@@ -1872,6 +1884,7 @@ where e.deptno = d.deptno
   ;
   select e.empno,e.ename,e.job,e.deptno,d.dname,d.loc
   from emp e, dept d 
+<<<<<<< HEAD
   where e.deptno = 10 and e.job not in(select job from emp where deptno = 30 )    
     and e.deptno = d.deptno  ;
 
@@ -2694,3 +2707,11 @@ select e.empno,e.ename,d.dname,d.loc from emp e
 left outer join dept d on e.deptno = d.deptno 
 
 order by dname desc; 
+  where e.deptno = 10 and job (select deptno from emp where job    
+      
+  
+  
+  
+  
+  
+
