@@ -1,6 +1,6 @@
 package sec01.exam01;
 
-public class VarExam {
+public class VarExam01 {
 
 	public static void main(String[] args) {
 
@@ -95,6 +95,21 @@ public class VarExam {
 
 		//System.out.println("x2 : " + x2);
 	
+	   // 정답	
+		// int x1 = 26845;
+		// int x2 = 684684;
+		
+		//int x3 = x1;
+		// x1 = x2 ;
+		// x2 = x3 ;
+		
+		
+		
+		
+		
+		
+		
+		
 		
 		
 		
