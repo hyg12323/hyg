@@ -142,7 +142,9 @@ public class VartypeExam02 {
 	System.out.println("백의 자리"+g1);
     
     */
-    int g = 537;
+    int g1 = 537;
+    int g2 = 537/100;
+      System.out.println(g2);
     
    //  System.out.println("백의자리"+(g/100)");
      
