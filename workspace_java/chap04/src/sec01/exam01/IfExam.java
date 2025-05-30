@@ -307,11 +307,11 @@ public class IfExam {
              //     System.out.println(m3);
                 
               
-              int hh = 25;
+              int hh = 14;
               
               int hh2 = hh %24;
               
-              int mm = 30+35;
+              int mm = 32;
               
              
              
@@ -319,7 +319,7 @@ public class IfExam {
              
               
              
-              
+               
               
               
               if(hh < 24 && mm <60){
@@ -342,7 +342,7 @@ public class IfExam {
               else if(hh == 24 && mm == 60) {
             	  System.out.println(hh2+1 +"시"+"00분");
               } 
-              else if(hh == 24 && mm > 60) {
+              else if(hh <= 24 && mm > 60) {
             	  System.out.println(hh2+1 +"시"+mm2+"분");
               } 
               else if(hh == 24 && mm < 60) {
@@ -370,7 +370,7 @@ public class IfExam {
                 		
                 
               
-              int g1 = 5000;
+              int g1 = -1;
               int g2 = 10000-g1;
               
               
@@ -380,7 +380,9 @@ public class IfExam {
                   if(g1 <= 10000) {
                 	  System.out.println(g1+"출금했구"+g2+"남았습니다" );
                   }
-              
+                  else {
+                	  System.out.println("정확히 입력 해주세요");
+                  }
               
               
               
@@ -429,16 +431,73 @@ public class IfExam {
           //  2, -3       영하 3도
              // 오늘 온도는 영하 3도 입니다. 어제보다 5도 낮습니다
           
+                 
+                 
+                 
+                 
+               int oo =  22;    
+               int oo2 = 12 ; 
+               int oo3 = oo2 - oo;   
+               
+               
+               if(oo < oo2 && oo < 0) {
+            	   System.out.println("오늘 온도는 영하"+oo*-1+"입니다 어제보다"+oo3+"도낮습니다");
+               }
+               else if(oo > oo2 && oo > 0) {
+            	   System.out.println("오늘 온도는 영상"+oo+"입니다 어제보다"+oo3*-1+"도높습니다");
+               }  
+               else if(oo < oo2 && oo > 0) {
+            	   System.out.println("오늘 온도는 영상"+oo+"입니다 어제보다"+oo3+"도낮습니다");
+               }    
+               else if(oo > oo2 && oo < 0) {
+            	   System.out.println("오늘 온도는 영하"+oo*-1+"입니다 어제보다"+oo3*-1+"도높습니다");
+               }  
+                 
+                 
+                 
+                 
+                 
            // 문제 8. 
             // 변수에 두자리 숫자(10~99)가 있을 때
             //  10의 자리와 1의 자리가 같은 수인지 판단 
                 
-                
+               
+               int i8 = 77; 
+               int i9 = i8/10;
+               int i10 = i8%10;
+               System.out.println(i10);
+               
+               if(i9 == i10)
+               {
+            	   System.out.println("같습니다" );
+               }
+               else if(i9 != i10)
+               {
+            	   System.out.println("틀립니다" );
+               }
+               
+               
+               
+               
                 
            //문제 9.
             //  사각형의 한쪽 모서리 : x1: 10 y1: 20
             //  대각선 모서리        : x2 : 90, y2 :100    
             //  이럴 때 새로운 점 x3, y3는 사격형에 포함되는가?
+
+	
+	
+	
+	
+	      
+	
+	
+	
+	
+	
+	
+	
+	
 	}
         }
 
