@@ -402,12 +402,276 @@ public class ForExam {
           	
     		  System.out.print(c9);}
           
-        	  
+          System.out.println();
           
+         for(int c9=1; c9<=5; c9++) {
+            for(int c10 = 5; c10>=c9; c10--) {
+               System.out.print(c9);	
+            }
+        	System.out.println();
+        	 
+         }
+         //String space = ".";
          
+         
+         for(int c9=1; c9<=5; c9++) {
+        	 
+         for(int c10= 1; c10<=c9; c10++) {
+        	 System.out.print(mark);       
+             }	
+         for(int c11=1; c11<=5; c11++) {
+        		
+         for(int c12=5; c12>=c11; c12--) {
+        	 
+        	 System.out.print(space); 		
+        	
+         }
+         
+         }   
+             	 
+         System.out.println();
+         	
+         	 
+          }
+         
+         
+	      
+         for(int c9=1; c9<=5; c9++) {
+        	 
+             for(int c10= 1; c10<=c9; c10++) {
+            	 System.out.print(mark);
+                   
+                 }	System.out.println();
+          }
+              int n = 5;
+      	
+         	for(int c9=1; c9<=5; c9++) {
+        	 
+             for(int c10= 1; c10<=c9; c10++) {
+            	 System.out.print(mark);
+             }
+            	 
+            	 for(int c11=1; c11<=n-c9; c11++) {
+                	 System.out.print(space);
+                
+           
+                	
+             }  
+            System.out.println();
           
+             
+             	 
+         	}
+             
+     
+         
+         
+         for(int c = 2; c<=20; c=c+2) {
+        	 
+        	 System.out.println("2x"+(c/2)+"="+c)
+        	 ;
+        	 }
           
+         for(int c = 2; c<=9; c++) {
+        	 for(int c3 =1; c3<=9;  c3++) {
+        		 System.out.println(c + "x"+c3+"="+(c*c3));
+        	 }
+        	 
+        	  
+        	 ;
+        	 }
+         
+         
+         
+         for(int c = 1; c<=3;c++) {
+        	 for(int c2 =1; c2<=7; c2++) {
+        		 System.out.print(c2);
+        	 } 
+         }
+         System.out.println();
+         
+         
+         int c4 = 5;
+         
+         for(int c= 1; c<=5; c++) {
+        	 
+        	 System.out.println();
+         for(int c2=1; c2<=c; c2++) {
+        	 System.out.print(mark);}
+         for(int c3=1; c3<=c4-c; c3++) {
+        	 System.out.print(space);
           
+        	 
+        	 
+        	 
+         }
+         
+        
+         
+         }
+         
+         
+         int c5 = 5;
+         
+         for(int c= 1; c<=5; c++) {
+        	 
+        	 System.out.println();
+         for(int c2=1; c2<=c5-c; c2++) {
+        	 System.out.print(space);}
+         for(int c3=1; c3<=c*2-1; c3++) {
+        	 System.out.print(mark);
+         }
+         for(int c7=1; c7<=c5-c; c7++) {
+        	 System.out.print(space);
+         }
+          
+         }
+         System.out.println();
+         
+         
+       //문제 1
+       // 주사위 2개를 굴려서 나올 수 있는 모든 조합을 출력하라
+       // [1.1][1.2]
+     
+         System.out.println();
+         for(int c=1; c<=6; c++) {
+         	
+         	for(int c2=1; c2<=6; c2++) {
+         	
+         	System.out.println();
+         	System.out.print(""+c+"."+c2);
+         	System.out.print(c+c2);
+         	}
+         }
+         
+      //문제 2
+      // 주사위 2개의 합 별로 나올 수 있는 조합
+      // 합2: [1.1]
+      // 합3: [1.2] [2.1]
+         	 System.out.println();
+             for(int c=1; c<=6; c++) {
+             	
+             	for(int c2=1; c2<=6; c2++) {
+             	
+             	System.out.println();
+             	System.out.print("["+c+c2+"]");
+             	
+                 int c3=c+c2;
+             		
+             	if(c3<=2) {
+             		System.out.println();
+               	 System.out.print("합2:"+"="+c3);
+               	System.out.println();
+             	}
+             	
+             	else if(c3<=3) {
+             		
+               	 System.out.print("합3"+"="+c3);
+               	System.out.println();
+             	}
+             	
+             	else if(c3<=4) {
+             		
+                  	 System.out.print("합4"+"="+c3);
+                  	System.out.println();
+                	}
+             	
+             	
+             	
+             	
+             	//count약자 : cout
+             	
+             	
+             	
+             }   	
+         
+         
+         	
+         	
+         	
+         	
+         
+      //문제 3
+      // 합 별 조합의 수 출력
+             	
+             	
+             	
+         
+         
+     //문제 4
+      // 순서에 관계 없이 중복 제거
+         //순서에 관계 없이 중복 제거
+         // 합2: [1.1]
+         // 합3: [1.2]와 [2.1]는 같음
+         
+    
+             	
+      //문제 5
+      // 입력받은 정수에 따라 다음과 같이 출력
+      /* 3
+       * 00 01 02
+       * 10 11 12
+       * 20 21 22       
+       */
+             	
+	   	 /* 4 
+	   	  * 00 01 02 03
+	      * 10 11 12 13
+	      * 20 21 22 23      
+	      */
+             	
+       
+             	
+             	
+             	
+             	
+             	
+	                          	  	
+        	
+        	
+     //문제 6
+     // 입력받은 정수에 따라 다음과 같이 출력
+     // 3
+     /* (정사각형)
+      * 3
+      * +++
+      * +.+
+      * +++
+      * 5
+      * +++++
+      * +...+
+      * +...+
+      * +...+
+      * +++++
+      *         	
+      */
+             	
+        	
+     
+             	
+             	
+             	
+
+             	
+             	
+             	
+        }
+         
+         
+        
+        	 
+     
+         
+         
+         
+         
+         
+         
+         
+         
+         
+         
+         
           
 	    }
 
