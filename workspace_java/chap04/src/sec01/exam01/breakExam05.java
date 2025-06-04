@@ -188,6 +188,12 @@ public class breakExam05 {
             break;  
         }
     }
+     for(int k=1; k<=3; k++) {
+      for(int j=k; j<=3; j++) {
+    	  System.out.println("주"+k+j);
+      }
+     }
+    
 	
     /* 문제4
 	 * 은행에서 1. 예금 2. 출금 3. 잔고확인 4. 종료	
@@ -235,12 +241,11 @@ public class breakExam05 {
     	}
    
 		int g = 10000+e;
-		 
-    if (a==2&&g>=0){
+		
+    if (b==2&&g>=0){
     	System.out.println(e+"를입금합니다"+g+"남은금액");
     }a = scan.nextInt();
    
-    
     
     
     
@@ -252,11 +257,36 @@ public class breakExam05 {
     
 
 	
+    int z = 5;
+    // 한줄 마다
+    for(int j=1; j<=z; j++) {
+    	//한칸마다
+    	for(int k=1; k<=z; k++) {
+    		//처음과 마지막 줄
+    		System.out.println("+");
+    	if(j ==1 || j == z) {
+    		System.out.println("+");
+    	}else {
+    		// 다음 줄에서
+    		
+    		// 처음과 마지막 칸\
+    		if(k==1 || k==z) {
+    			System.out.println("+");
+    		}else {
+    				System.out.println(".");
+    			}
+    		
+    	}
+    	}
+    	System.out.println();
+    }
+    
+    
 	
 	
 	
 	
        
-
+     
 	}
 }
