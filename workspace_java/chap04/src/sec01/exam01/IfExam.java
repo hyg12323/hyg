@@ -492,7 +492,36 @@ public class IfExam {
 	      
 	
 	
-	
+	             	System.out.print("["+c+c2+"]");
+             	
+                 int c3=c+c2;
+             		
+             	if(c3<=2) {
+             		System.out.println();
+               	 System.out.print("합2:"+"="+c3);
+               	System.out.println();
+             	}
+             	
+             	else if(c3<=3) {
+             		
+               	 System.out.print("합3"+"="+c3);
+               	System.out.println();
+             	}
+             	
+             	else if(c3<=4) {
+             		
+                  	 System.out.print("합4"+"="+c3);
+                  	System.out.println();
+                	}
+             	
+             	
+             	
+             	
+             	//count약자 : cout
+             	
+             	
+             	
+             }   	
 	
 	
 	

@@ -226,15 +226,15 @@ public class ArrayExam {
 	      
 	   for(int i=0; i<aw.length; i++) {
 		
-	         
+	         // 홀수 일때만 세기
 		 if(aw[i]%2!=0) {
 			count++;
 
-			 System.out.println(aw[i]);
+		//	 System.out.println(aw[i]);
  			 
 		 }
 		 
-	   }//System.out.println("2번:"+count);
+	   }System.out.println("2번:"+count);
 	    
 	   
 	   
@@ -277,6 +277,13 @@ public class ArrayExam {
 	   }System.out.println("4번"+max);
 	   
 	   
+//	   max = Integer.MIN_VALUE;
+//	   System.out.println(max);
+	   
+	   //1. 일단 처음 값을 최대값으로 저장
+	   //2. 다음부터 최대값 이었던 것과 비교해서 큰 값을 최대값으로 갱신
+	   //3. 반복하다 보면 가장 큰 값이 최대값 변수에 남아있겠다
+	   
 	   
 	   
 	   
@@ -287,16 +294,13 @@ public class ArrayExam {
 	   
 	   
 	      
-	   for(int i=0; i<aw.length; i++) {
-		   
-	        
-		 if(aw[i]<=max) {
-	       max = aw[i];  
-					 
-		
-		 } 
-	   }System.out.println("ww:"+max);	
-	   
+	 int max2 = Integer.MIN_VALUE;
+	 for(int i=0; i<aw.length; i++) {
+		 if(aw[i] != max2 && aw[i] >max2) {
+			 
+		 }System.out.println(max2);
+			 
+	 }
 	   
 	  
 	   
@@ -337,18 +341,23 @@ public class ArrayExam {
 	   //문제7
 	   // 오른쪽으로 이동 하는데 맨 끝에 값을 맨 처음으로 보내기
 	   //{3,4,7,5,1,9,4}  -> {4,3,4,7,5,1,9}
+	   // 같은 크기의 배열을 일단 만들고
+	   // 원본의 맨 마지막 값을 사본의 맨 처음에 넣기
+	   // 나머지는 사본의 두번째 복사
 	   
 	   
             
-	   int[] w2  = new int [aw.length-1];
-         w2[0] = aw.length-1;
-	   for(int ii=1; ii<w2.length; ii++) {
-	     w2[ii] =aw[ii-1];
-	             
-		     
-	        System.out.println(w2[ii]);
-		   
-	   }
+	   int[] array7  = new int [aw.length];
+         array7[0] = aw.length-1;
+	   for(int i=1; i<array7.length; i++) {
+	     array7[i] =aw[i-1];
+	   }       
+	        
+	     for(int i=1; i<array7.length; i++) {
+		     System.out.println("ㅁ"+aw[i]);
+	     
+	     }   
+	   
 
 	   
         	
@@ -368,6 +377,52 @@ public class ArrayExam {
 	   // 8-1 : 숫자만
 	   // 8-2 : 소문자만
 	   // 8-3 : 숫자2개 이상, 대/소문자 각 1개 이상
+	     
+	     
+	     int[] arr8 = new int[8];
+	     for(int i=0; i<arr8.length; i++) {
+	    	 // 한자리 숫자 random
+	    arr8[i] =(int)(Math.random()*10);
+	     }
+	     System.out.println("문제8");
+	     for(int i=0; i<arr8.length; i++) {
+	    	 System.out.print(arr8[i]+", ");
+	     }
+	     
+	     //char[] a = {'a','b',,,,'z'}
+	     //97 ~122까지
+	   
+	     
+	     
+//	     (int)(Math.random()*26)+ 97
+	     // 번외편. random공식을 완성해보자
+	     {         int start = 48;
+              int end = 59;
+//	     (int)(Math.random()*(end -start +1)) +start;	
+            
+          char[] arr83 = new char[8];
+          arr83[0] = (char)( (int)(Math.random()*(end -start +1)) +start );
+          arr83[1] = (char)( (int)(Math.random()*(end -start +1)) +start );
+          
+          //대문자
+          start = 65;
+          end = 90;
+          arr83[2] = (char)( (int)(Math.random()*(end -start +1)) +start );
+          
+          
+          //소문자
+          start = 97;
+          end = 122;
+          arr83[2] = (char)( (int)(Math.random()*(end -start +1)) +start );
+	}          
+          
+      // 8번 반복하면서
+      // 이번에 나올 숫자/대문자/소문자 random()으로 선택
+      // 대충 마지막 쯤에서 숫자2개/대문자1개/소문자1개 나왔었는지 판단
+              
+	     
+	     
+	     
 	   
 	   //문제9
 	   //자리가 10개 있는 소극장의 예약 시스템
@@ -375,13 +430,47 @@ public class ArrayExam {
 	   // 메뉴 : "1.예약 2.모든 좌석 현황" 3. 잔여좌석 0.종료
 	   //만약1 : 예약이 가능하다면 "n번 자리 예약 했습니다"
 	   //만약2 : 예약이 불가능하다면 "이미 예약 되어 있습니다"
-	   
+//	   
+//	     int[] seat = new int[10]; // 0:예약가능, 1:예약완료
+//	     // 예를 들어 3번째 자리에 예약을 했다
+//	//     seat[2] = 1;
+////             	     
+//	     
+//	     int booking = -1;
+//	     do {
+//	    	 System.out.println( "1.예약 2.모든 좌석 현황 3. 잔여좌석 0.종료");
+//	    	 Scanner scan = new Scanner(system.in);
+//	     menu = scan.nextInt();
+//	     
+//	     switch(booking) {
+//	     case 1:
+//	    	 System.out.println("몇번 자리?(0-9)");
+//	         int booking =sacn.nextInt();
+//	         if()
+//	      
+	     
+	 //   }
+	     
+	     
+	     
+	     
+	     
+	     
+	     
+	     
+	     
+	     
+	     
+	     
+	     
+	     
+	     
 	   
 	   //문제10
 	   // 로또 6개 생성. 단, 중복 없이
 	   
 	   
-	   int [] g =new int[6];
+//	   int [] g =new int[6];
 	   
 //	   g[0] = (int)(Math.random()*45+1);
 //	   g[1] = (int)(Math.random()*45+1);
@@ -389,15 +478,15 @@ public class ArrayExam {
 //	   g[3] = (int)(Math.random()*45+1);
 //	   g[4] = (int)(Math.random()*45+1);
 //	   g[5] = (int)(Math.random()*45+1);
-	   for(int i=0; i<g.length; i++) {
-		   g[i] = (int)(Math.random()*45+1);
-		   System.out.println("로또"+g[i]);  
-		for(int cc= 0; cc<=i; cc++) { 
-			if (g[i] != g[cc]) {
-				System.out.println();	
-				
-			}
-		            	
+//	   for(int i=0; i<g.length; i++) {
+//		   g[i] = (int)(Math.random()*45+1);
+//		   System.out.println("로또"+g[i]);  
+//		for(int cc= 0; cc<=i; cc++) { 
+//			if (g[0] != g[1]) {
+//				System.out.println(g[i]);	
+//				
+//			}
+//		            	
 			//if(g[i] g[cc])  {             // 중복이 안됬다
 			
 					
@@ -405,13 +494,63 @@ public class ArrayExam {
 			
 		 
 			
-		}
+//		}
 		
 		
 		   
-	   }  
+//	   }  
 		   
-		      
+		                                       //flag가 true false로 바꿔서 
+//	   int[] lotto = new int[(int)(Math.random()*45+1)];
+//	   
+//	   
+//	   
+//	   while(lotto[0] != lotto[1]) {
+//		   lotto[1] = (int)(Math.random()*45+1);
+//	   }
+//	   
+//	   lotto[2] = (int)(Math.random()*45+1);
+//	   while(lotto[0] != lotto[2] && lotto[1] != lotto[2]) {
+//		   lotto[2] =(int)(Math.random()*45+1);
+//	   }
+//	   //다시 쓰면
+//	   //일단 추출
+//	   
+//	   
+//	   lotto[2] = (int)(Math.random()*45+1);
+//	   do {
+//		   boolean flag = false;
+//		   for(int i=0; i<2; i++) {
+//			   if(lotto[i] == lotto[2]) {
+//				   flag = true;
+//			   }
+//		   }
+//		   while(flag) {
+//	   }
+	     System.out.println();
+	     int [] lotto =new int[6];
+	     
+	     boolean flag = false;
+	     
+	     for(int i=0; i<lotto.length; i++) 
+	    	 
+	    do {
+	    	flag = false;
+	    	
+	    	 lotto[i] = (int)(Math.random()*45)+1;
+	    	 for(int j=0; j<i; j++) {
+	    		 if(lotto[j] ==lotto[i]){
+	    			 System.out.println(("중복:"+lotto[i]));
+	    			 flag =true;
+	    			 
+	    		 }
+	    	 }
+	     } while(flag);
+	     for(int i=0; i<lotto.length; i++) {
+	    	 System.out.print(lotto[i]+",");
+	    	 
+	    	 
+	     }System.out.println();
 	   
 	   
 	   

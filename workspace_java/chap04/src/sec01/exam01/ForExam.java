@@ -594,7 +594,7 @@ public class ForExam {
       //문제 3
       // 합 별 조합의 수 출력
              	
-             	
+             
              	
          
          
@@ -646,7 +646,17 @@ public class ForExam {
       *         	
       */
              	
-        	
+    String mark1 = "+";
+    String q = ".";
+    
+    for(int a =1; a <5; a++){
+    	System.out.print(mark1);
+    }
+    
+    	
+    
+      
+             	
      
              	
              	

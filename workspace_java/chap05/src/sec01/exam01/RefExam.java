@@ -68,6 +68,69 @@ public class RefExam {
 	    
 	    
 	    
-	}
+     	
+     //문제 6
+     // 입력받은 정수에 따라 다음과 같이 출력
+     // 3
+     /* (정사각형)
+      * 3
+      * +++
+      * +.+
+      * +++
+      * 5
+      * +++++
+      * +...+
+      * +...+
+      * +...+
+      * +++++
+      *         	
+      */
+	    String mark1 = "+";
+	    String q = ".";
+        int g1 = 6;
+	    
+      for(int d1 =1; d1 <=g1; d1++){
+    	//System.out.print(mark1);
+    	  System.out.println();  
+    for(int f1 =1; f1 <=d1; f1++) {
+    	System.out.print(mark1);
+    	
+       }
+      }   
+        
+        
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+             	
+    for(int d1 =1; d1 <=g1; d1++){
+    	//System.out.print(mark1);
+    	
+    for(int f1 =1; f1 <=g1; f1++) {
+   //System.out.print(mark1);
+    if (d1 == 1 || d1 == g1 || f1 == 1 || f1 == g1) {
+        System.out.print(mark1);
+    } else {
+        System.out.print(q);	 
+    
+    	
+    }
+	    
+    }	   System.out.println();
+    }  
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	} 
 
 }
