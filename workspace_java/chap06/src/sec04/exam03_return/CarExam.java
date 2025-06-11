@@ -23,7 +23,9 @@ public class CarExam {
 		
 		}
 
-  		
+  		Car2 c2 = new Car2();
+  		c2.setgas(3);
+  		c2.run();
 		
 		
 		
