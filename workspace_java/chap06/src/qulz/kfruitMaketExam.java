@@ -1,8 +1,9 @@
 package qulz;
 
 public class kfruitMaketExam {
+	public static void main(String[] args) {
 
-	kfruitMaket aa  = new kfruitMaket("휴먼과일","천안");
+		KfruitMarket aa  = new KfruitMarket("휴먼과일","천안");
 			
 			int  price =  market.ask2("토마토");
 	    System.out.println("토마토 가격은?"+ price);
@@ -12,4 +13,5 @@ public class kfruitMaketExam {
 	      fruit.price = 3000;
 	      fruit.stock = 15;
 	    market.addFruit(null);
+}
 }

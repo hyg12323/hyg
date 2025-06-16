@@ -8,7 +8,7 @@ public class Fruit2Exam {
 	 Fruit2 fruit2	= new Fruit2(); 
 		
 		
-	 String[] a =  fruit2.apple("사과");
+//	 String[] a =  fruit2.apple("사과");
 	  
 	 String[] b =  fruit2.banana("바나나");	
 		
