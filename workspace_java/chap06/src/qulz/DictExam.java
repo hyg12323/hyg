@@ -8,9 +8,9 @@ public class DictExam {
 	
 	Dict d = new Dict();
 	
-	//String  a = "love";
-//	System.out.println("사랑");
-	   System.out.println(d.en[0]);	
+	String  a = "love";
+	System.out.println(d.abc("love"));
+	  // System.out.println(d.en[0]);	
 		
 	
 	}

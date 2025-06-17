@@ -12,18 +12,20 @@ public class Dict {
     String[] en  =  new String[] {"love", "hate", "devil", "angel"};
     String[] ko  =  new String[] {"사랑", "증오", "악마", "천사"};
        
-      String ab (String a, String b ){
-     	  en[0] = a; ko[0] = b;
+      String abc (String a ){
+     	  
     	    
     	  for (int i =0; i < en.length; i++) {
-    		  if (en[i] == en[1]) {
+    		  if (a.equals(en[i]))  {
+    			  return ko[i];
+    		  }	    
     	//		  System.out.println(en[i]);
-    	  } 			  return ko[i];
-    	  }
-    	  }
-    		  
+    		  		 
+    	  }return "없음"; 
+    	  } 
+        
           }	  
-    	  }
+
 //      }
 //  
 

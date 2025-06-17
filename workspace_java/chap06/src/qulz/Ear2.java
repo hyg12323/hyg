@@ -10,7 +10,7 @@ public class Ear2 {
 	String sun;
 	String music;
 	int price;
-	
+	boolean noise; 
 	
 	
 }

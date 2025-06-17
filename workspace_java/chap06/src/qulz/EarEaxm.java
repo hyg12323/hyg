@@ -1,3 +1,5 @@
+
+
 package qulz;
 
 public class EarEaxm {
@@ -9,7 +11,13 @@ public class EarEaxm {
 	Ear ear = new Ear("이어폰 나라"); 
 	
 	
-	ear.sss("apple");
+	ear.noise("samsung");
+	
+	
+	
+	
+	//ear.ss2("all");
+	
 	
 	
 	
