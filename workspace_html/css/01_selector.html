@@ -4,101 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="asset/01_selector.css">
     <style>
-        /* css 주석 */
-
-      /* 전체 선택자 */
-      * {
-        color: red;
-      }
-
-
-      /* tag 선택자 */
-      h2 {
-        font-size: 500%;
-        color:  rgba(153, 51, 51, 0.932);
-      }
-     /* id 선택자*/
-      #a1 {
-         color:black;
-      }
-     /* class 선택자*/
-     .c1{
-        background-color: green;
-     }
-     .bigText {
-        font-size: 30px;
-     }
-     #div1{
-         background-color: yellow;
-     }
-     /* 마우스 올렸을 때 */
-     #div1:hover{
-       background-color: grey;
-     }
-     /* 클릭 했을 때 */
-     #div1:active{
-       color: black;
-       font-size:100px;
-     }
-
-     /*누군가의 첫번째 자식*/
-    .text1:focus{
-       background-color: grey;
-    }
-     
-    
-      li:first-child{
-        color: blue;
-      }
-      ul:first-child{
-        font-size: 30px;
-      }
-
-      /* 실제 등장하는 요소 중 첫번째*/
-      ul:first-of-type{
-        text-decoration: underline;
-      }
-
-      tr:nth-child(2n-1) {
-        background-color:yellow;
-      }
-
-      h3:after {
-        content:"AFTER";
-        font-size: 10px;
-        color:black;
-      }
-      h3:before{
-        content:"BEFORE";
-        font-size: 10px;
-        color:black;
-      }
-       /* 다중 선택자*/
-       /* li{
-        border:1px solid red;
-       }
-       h3{
-        border:1px solid red;
-       } */
-       h3, li,#div1{
-        border:1px solid red;
-       }
-      /* >: 바로아래 자식 요소 만*/
-       #ol > li{
-        color:black;
-      }
-       /* 띄어쓰기: 자손들 모두를 대상으로 */
-      #ol li{
-       border:1px solid black;
-      }
-        
+      
     </style>
 </head>
 <body>
     <h1 title ="헬로월드">hello world</h1>
     <h2>부제목</h2>
-    <ul>
+    <ul calss="b">
         <li class="c1 bigText">li 1</li>
         <li id="a1" class="c1">li 2</li>
         <li>li 3</li>
@@ -109,8 +23,8 @@
     </div>
     <input type="text" class ="text1">
     <hr>
-    <ul>
-        <li>1</li>
+    <ul class ="a b">
+        <li class="a">1</li>
         <li>2</li>
         <li>3</li>
         <li>4
@@ -147,10 +61,23 @@
         <li>2</li>
         <li>3</li>
         <ol>
-            <li>1-1</li>
-            <li>1-2</li>
-            <li>1-3</li>
+            <li data-seq="title">1-1</li>
+            <li data-seq="title">1-2</li>
+            <li data-seq="title">1-3</li>
         </ol>
     </ol>
+
+    <a href="http//naver.com" id="naver">http//naver.com</a>
+    <br>
+    <a href="https//google.com">https//google.com</a>
+    <br>
+      
+     <input type = "checkbox"><span>체크</span>
+
+     <br>
+     <span id="s1">span</span>
+
+
+   <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 </body>
 </html>
