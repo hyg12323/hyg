@@ -1,0 +1,14 @@
+.homepage{
+    background-image: url('https://html5up.net/uploads/demos/tessellate/images/header.jpg');
+    height: 700px;
+    border:1px solid none;
+    background-size: 100% 100%;
+    background: contain;
+}
+.homepage .home{
+    box-sizing: inherit;
+    font-size: 2.25em;
+    line-height: 1.25em;
+    margin-bottom: 0;
+}
+}
