@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width= , initial-scale=1.0">
+    <title>Document</title>
+    <style>
+     .p{
+        border: 1px solid red;
+        height: 87px;
+        width: 100px;
+        margin: 100px;
+     }
+    
+     .hidden {
+        overflow: hidden;
+     }
+     .scroll{
+        overflow: scroll;
+     }
+     .auto{
+        /* overflow: auto; */
+        overflow: scroll;
+     }
+
+     .parent{
+        border: 1px solid red;
+        width: 300px;
+        white-space: nowrap;   /* 한 줄로 만들기 */
+        overflow:auto;
+     }
+
+      .parent div {
+        border: 1px solid rgb(8, 0, 255);
+        display: inline-block;
+        width: 100px;
+        margin: 5px;
+      }
+    </style>
+</head>
+<body>
+    <div class="p hidden" title=" Lorem ipsum dolor sit amet consectetur, adipisicing elit. Doloremque repellendus rem temporibus, quo fugiat qui autem ratione inventore quas consequuntur quod possimus veniam officia provident atque accusantium reiciendis, unde velit.">
+        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Doloremque repellendus rem temporibus, quo fugiat qui autem ratione inventore quas consequuntur quod possimus veniam officia provident atque accusantium reiciendis, unde velit.
+    </div>
+    <div class="p scroll" title=" Lorem ipsum dolor sit amet consectetur, adipisicing elit. Doloremque repellendus rem temporibus, quo fugiat qui autem ratione inventore quas consequuntur quod possimus veniam officia provident atque accusantium reiciendis, unde velit.">
+        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Doloremque repellendus rem temporibus, quo fugiat qui autem ratione inventore quas consequuntur quod possimus veniam officia provident atque accusantium reiciendis, unde velit.
+    </div>
+    <div class="p auto" title=" Lorem ipsum dolor sit amet consectetur, adipisicing elit. Doloremque repellendus rem temporibus, quo fugiat qui autem ratione inventore quas consequuntur quod possimus veniam officia provident atque accusantium reiciendis, unde velit.">
+        Lorem ipsum
+    </div>
+
+    <div class="parent">
+        <div>항목1</div>
+        <div>항목2</div>
+        <div>항목3</div>
+        <div>항목4</div>
+        <div>항목5</div>
+
+    </div>
+</body>
+</html>
