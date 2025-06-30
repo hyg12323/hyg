@@ -10,7 +10,7 @@
         height: 300px;
 
         display: flex;
-        /* display:inline-block*/
+        /* display:inline-block */
         /* display: inline-flex; */
         /* main축 기본값 : 왼쪽에서 오른쪽으로 */ 
          /* flex-direction: row;  */
@@ -59,7 +59,7 @@
          /* align-items: center; */
          
 
-         flex-wrap: wrap;
+         /* flex-wrap: wrap; */
          /* 여러줄에 대한 cross축의 이야기 */
          /* 기본값, 각 줄의 ㄴ좊이를 꽉 채운 상태 */
          /* align-content: stretch; */
@@ -70,7 +70,7 @@
          align-content: center;
          align-content: space-between; */
          /* align-content: space-around; */
-         align-content: space-evenly;
+         /* align-content: space-evenly; */
          
           
           
@@ -83,6 +83,9 @@
         color: white;
 
         width: 200px;
+        /* height: 200px; */
+        
+        /* flex-grow: 1; */
       }
     
     
@@ -90,11 +93,11 @@
 </head>
 <body>
      <div class="flex-container">
-    <div class="flex-item">1</div>
-    <div class="flex-item">2</div>
-    <div class="flex-item">3</div>
-    <div class="flex-item">4</div>
-    <div class="flex-item">5</div>
+    <div class="flex-item" style="flex-shrink: 0; align-self: start; order:2" >1</div>
+    <div class="flex-item" style="order: 4;">2</div>
+    <div class="flex-item" style="order: 3;">3</div>
+    <div class="flex-item" style="flex-grow:1; flex-shrink: 4; min-width: 100px;">4</div>
+    <div class="flex-item" style="flex-grow:3; flex-shrink: 2;">5</div>
   </div>
 </body>
 </html>
