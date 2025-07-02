@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        // function 키워드로 함수를 선언
+        // 양식 
+        // function 함수명(전달인자들){ }
+        //전달인자에는 타입을 적지 않는다
+
+        function plus(x,y){
+            console.log('x',x)
+            console.log('y',y)
+
+            let z = x + y;
+            return z;
+        }
+      let a = plus(2, 3);
+      console.log('a:', a);
+
+      plus(2, plus(1,2));
+      
+      console.log('--------------')
+      let b = plus();
+      console.log('b:',b)
+      let c = plus(4);
+      console.log('c:', c)
+      console.log('--------------')
+      let d = plus(4,5,6,7)
+      console.log('d: ',d)
+
+      function plus2(x,y){
+          if(x == undefined){
+               x = 0;
+          }
+          if(y == undefined){
+             y = 0;
+          }
+            return x + y;
+        }
+         // 전달인자가 없는 경우 초기값 적용
+         // 있으면 전달인자 사용
+          function plus3(x=0, y=1){
+            return x + y;
+          }
+            console.log(1,2,3,4,5,6);
+         
+            // spread 연산자
+        function log( ...obj ){
+             console.log( typeof obj) // 배열 
+             console.log( obj[1] )
+             console.log( obj )
+        }
+        log(1,2)
+
+        let f = [10, 20]
+        console.log(...f);         // 이거랑
+        console.log(f[0], f[1]);   // 이거랑 같음
+        console.log(10, 20);       // 이거랑 같음
+        
+        let g = "console.log(123)";
+        eval(g); // string을 javascript로 변환
+
+
+        function plus4(){
+            console.log('plus4 실행')
+        }
+        let p = print();
+        console.log('typeof p:', typeof p)
+        // p();
+
+        let p2 = print();
+        console.log('p2:',p2)
+
+        console.log('typeof print:', typeof print);
+
+        function print2(){
+            console.log('print2 실행')
+        }
+
+        function print2(){      // 덮어 쓰기 가능
+            console.log('print3(거짓말) 실행') 
+        }
+
+        print2()
+
+        function over(x){
+            console.log('x:',x)
+        }
+
+         function over(x,y){
+            console.log('x,y:',x, y)
+        }
+
+        over(1)
+      
+        let sum = 0;
+         let numbers = [3, 7, 1, 9, 4];
+         for(let i = 0; i <numbers.length; i++){
+             sum += numbers[i];
+             console.log(sum)
+      
+        }
+        
+        
+
+      
+
+</script>
+</head>
+<body>
+    
+</body>
+</html>
