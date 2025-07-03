@@ -8,7 +8,7 @@
         // function 키워드로 함수를 선언
         // 양식 
         // function 함수명(전달인자들){ }
-        //전달인자에는 타입을 적지 않는다
+        // //전달인자에는 타입을 적지 않는다
 
         function plus(x,y){
             console.log('x',x)
@@ -67,25 +67,37 @@
         function plus4(){
             console.log('plus4 실행')
         }
+
+
+        function print(){
+            console.log()
+        }
         let p = print();
         console.log('typeof p:', typeof p)
         // p();
-
+        
         let p2 = print();
         console.log('p2:',p2)
-
+        
         console.log('typeof print:', typeof print);
-
+        
         function print2(){
             console.log('print2 실행')
         }
-
+        
         function print2(){      // 덮어 쓰기 가능
             console.log('print3(거짓말) 실행') 
         }
-
+        
         print2()
-
+        
+        let sum = 0;
+         let numbers = [3, 7, 1, 9, 4];
+         for(let i = 0; i <numbers.length; i++){
+             sum += numbers[i];
+             console.log(sum)
+      
+        }
         function over(x){
             console.log('x:',x)
         }
@@ -95,18 +107,111 @@
         }
 
         over(1)
-      
-        let sum = 0;
-         let numbers = [3, 7, 1, 9, 4];
-         for(let i = 0; i <numbers.length; i++){
-             sum += numbers[i];
-             console.log(sum)
-      
-        }
+        console.log(1, typeof over) // 글자 숫자 타입을 알아보는 typeof 
+         
         
-        
+        over = 1;
+        console.log(2, typeof over)
+        //over();
 
-      
+
+        // callback
+        // 원달러 환율 계산 함수
+        function change_en_ko( dollar ){
+             return dollar * 1354.75;
+        }
+       // 달러원 환율 계산 함수
+           function change_ko_en( won ){
+             return won / 1354.75;
+        }
+
+         // 환전 함수
+         // 전달인자 : 금액, 환율 계산 함수
+         function change( money, callback ){
+             console.log('환전을 시작 합니다')
+            
+            if( typeof callback == 'function' ){
+             let result = callback( money )
+             return result;
+         } else{
+            console.log('콜백 함수 없음')
+         }
+        }
+        const money = change(100, change_en_ko);
+        console.log('환전된 금액은', money);
+        change(100);
+
+              //익명 함수
+        let noName = function(){
+            console.log('익명함수')
+        }
+        noName();
+        
+        //위의 것과 완벽히 동일
+        // function noName(){
+        //     console.log('익명함수')
+        // }
+          
+         const m = 100;
+         change(m,noName);
+         change(100,function(){
+            console.log('익명함수')
+         });
+         console.log('------------')
+         setTimeout
+        //  첫번째 전달인자 : 실행할 함수(콜백함수)
+        //  두번째 전달인자 : 지연 시간(1/1000초)
+         setTimeout(noName, 1000 * 3);
+
+        let st1 = setTimeout(   //알아둬야함
+             function(){
+            console.log('3초뒤 실행됨1')
+        }
+        , 1000 * 3
+    );
+     
+    console.log('콘솔 출력')
+
+    console.log('st1',st1)
+    clearTimeout(st1)
+
+
+        //2번
+     let time = 30;
+          setTimeout(
+             function(t,y){
+            console.log('3초뒤 실행됨2',time) //3번
+        }
+        , 1000
+        , time  //1번
+        , 'b'
+    );
+
+   let si = setInterval(function(){
+        console.log('setinterval 실행')
+        console.log('.')
+    }, 1000 * 2 )
+    //  clearInterval(si) //예약 취소
+
+       setTimeout(function(){
+         clearInterval(si)
+       }, 5000 )
+         
+
+       function log(){
+        console.log();
+       }
+        log(1,2,3,4)
+     // 화살표 함수    
+
+     function ab (x,y){
+        let a = x+y;
+           console.log(a)
+     }
+      ab(2,3)
+     
+         
+   
 
 </script>
 </head>

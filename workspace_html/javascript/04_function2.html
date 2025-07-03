@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function rr(x,y){
+        let  c = x+y;
+        return c
+    }
+
+    console.log(rr(7,11))
+     console.log('--------------')
+
+
+
+    function greet(name, callback) {
+    console.log('안녕하세요, ' + name);
+    callback();  // 전달받은 함수를 실행
+   }
+
+    function sayBye() {
+    console.log('안녕히 가세요!');
+    }
+
+    greet('지민', sayBye);
+
+    //화살표 함수 arrow function
+    let test0 = function(a,b){
+        console.log(a,b)
+        return a;
+    }
+    // 익명 함수일 경우 화살표 함수로 변경할 수 있다 2개 일때
+    let test1 = (a, b) => {
+        console.log(a,b)
+        return a;
+    }
+      // 전달인자가 하나일 때 만
+      // 전달인자의 괄호를 생략할 수 있다
+    let test2 = (a) =>{ 
+        console.log(a)
+        return a;
+    }
+
+    let test3 = a =>{
+        console.log(a);
+        return a;
+    }
+
+    // 전달인자가 없을대 ()생략 불가능
+    let test4 = () => {
+
+    }
+
+    let test5 = (a, b) =>{
+        return a + b;
+    }
+    //실행문 안의 내용이 return문 "만" 있는 경우
+    // return과 { } 생략 가능
+    let test6 = ( a , b ) => a + b;
+
+    let test7 = a => a * 3;
+    test7(9)
+    console.log(test7(9))
+
+
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
