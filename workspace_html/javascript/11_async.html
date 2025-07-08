@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        /* 실행 순서 
+        let cc = plus(1, 3);
+            console.log(typeof a);    //2
+            t();                                        //4
+            a=5;                                     //3
+        function t(){                               //1
+            z=a;
+            console.log(z);
+       }
+         function plus (a, b){
+           console.log(typeof sum);
+           if(typeof a === 'number' && typeof b === 'number' ){
+               sum = a + b;
+               return sum;
+
+           }else{
+               console.log('숫자 넣으셈');
+
+           }
+       }
+        */
+
+        fn1();
+        function fn1(){
+            console.log('fn1 실행')
+        
+            fn2()
+             console.log('fn2 호출끝')
+        }
+
+               
+        function fn2(){
+            console.log('fn2 실행')
+
+            fn3()
+            fn3()
+            console.log('중간에 낀 것 1')
+            setTimeout( function(){
+                console.log('중간에 낀 것 2')
+            }, 0 ) // 100 milliseconds
+
+            setTimeout( function(){
+                console.log('중간에 낀 것 3')
+            }, 0 )
+
+            fn3()
+            fn3()
+        }
+
+        function fn3(){
+            console.log('fn3 실행')
+        }
+         
+
+
+
+
+    </script>
+</head>
+<body>
+</body>
+</html>
