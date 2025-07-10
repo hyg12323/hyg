@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Document</title>
+</head>
+<body>
+       <!-- // 1단계 
+      // 신청 버튼 누르면 input의 글씨가 아래에 쌓인다
+      -->
+      <div>
+            <input type="text" id="text"value ="" >
+            <input type="button"id="button" value="선택"><br>
+            <span id = rel></span>
+      </div>
+      <hr><br>
+      <!-- <div class ='name' value="하용군">하용군</div>
+      <div class ='adr' value="천안시">천안시</div>
+      <div class ='tel' value="1234">1234</div> -->
+      
+      <div> 주문정보
+            <input type="button" id ='chec2' value="뿡뿡"><br>
+            <input type="text" class ='aname' value="하용군"><br>
+            <input type="text" class ='aname' value="천안시"><br>
+            <input type="text" class ='aname' value="010">
+      </div>
+
+            <div> 배송정보<br>
+             <span>주문같으면체크</span>
+            <input type="checkbox" id ='chec' value="chec"><br>
+            <input type="text" class ='bname' value=""><br>
+            <input type="text" class ='bname' value=""><br>
+            <input type="text" class ='bname' value="">
+
+      </div>
+      <script>
+            const rel = document.querySelector('#rel')
+            const text = document.querySelector('#text')
+            const button = document.querySelector('#button')
+            button.addEventListener('click',()=>{
+             if(text.value !== ''){ // input<글씨창 그자체>.value <사용자가 입력한값>
+           rel.innerHTML += text.value+ '<br>'
+             }
+                
+            })
+
+              const chec = document.querySelector('#chec')
+              const bname = document.querySelectorAll('.bname')
+              const aname = document.querySelectorAll('.aname')
+              chec.addEventListener('click',function(){
+                  for(i=0; i < aname.length; i++){
+                    bname[i].value = aname[i].value;
+                 
+                  }
+                  
+              })
+
+      </script>
+      <!-- // 1단계 
+      // 신청 버튼 누르면 input의 글씨가 아래에 쌓인다
+     
+        
+      // 2단계 
+      // 주문정보와 같음 버튼을 누르면 주문자의 정보가 배송 정보로 복사됨
+     
+      // 3단계
+      // 메뉴가 여러개일 때 선택한 메뉴만 특이하게 보이게
+       
+      // 4단계
+      // 썸네일 클릭 또는 mouseover 시 큰 그림 변경 및 유지
+
+      // 5단계
+      // 피자 주문 시스템
+      // 사이즈, 토핑, 도우를 선택한 정보 한번에 표시
+       // ui 피자 주문
+
+      //  사이즈 radio
+      //   토핑 checkbox
+      // 도우종류  select
+      // 주문  
+      // 주문 정보
+
+      // 6번
+      //TODO
+      // 추가 버튼 클릭 : input 내용 추가
+      // 할일 체크하면 할일 클씨 취소선
+      // 할일 삭제하면 할일 삭제
+      // 전체선택 구현
+      // 선택취소 구현 -->
+</body>
+</html>
