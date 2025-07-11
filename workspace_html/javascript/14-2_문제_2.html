@@ -4,6 +4,18 @@
       <meta charset="UTF-8">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <title>Document</title>
+      <style>
+
+      .chi{
+            /* padding-top:10px; */
+            border : 1px solid red;
+            width: 60px;
+            height: 35px;
+
+      }
+
+
+      </style>
 </head>
 <body>
        <!-- // 1단계 
@@ -18,7 +30,10 @@
       <!-- <div class ='name' value="하용군">하용군</div>
       <div class ='adr' value="천안시">천안시</div>
       <div class ='tel' value="1234">1234</div> -->
-      
+
+      <!-- // 2단계 
+      // 주문정보와 같음 버튼을 누르면 주문자의 정보가 배송 정보로 복사됨
+       -->
       <div> 주문정보
             <input type="button" id ='chec2' value="뿡뿡"><br>
             <input type="text" class ='aname' value="하용군"><br>
@@ -34,7 +49,25 @@
             <input type="text" class ='bname' value="">
 
       </div>
-      <script>
+      <hr><br><br>
+
+
+      <div class="chicken">
+           <div class="chi">양념치킨</div>
+           <div class="chi">간장치킨</div>
+           <div class="chi">마라치킨</div>
+           <div class="chi">민트치킨</div>
+      </div>
+
+      <br>
+       <div>
+      <img style="width: 100px; height: 100%;" src="https://i.namu.wiki/i/sfpBPCzs6M2Rbn4p9vb5nnA-UF0LFhbmlTJ-K6ngWyDo4T4GPps8LLDD_nplZSWE1t2746vAFt8ceVpxF9_jHtyMYbbh9C-ohhod6X_chy8L0rCjzmhb719ajRsJ3cF2WGR-WeKYT14I66J059ieDA.webp">
+      </div>
+    
+    
+    
+    
+    <script>
             const rel = document.querySelector('#rel')
             const text = document.querySelector('#text')
             const button = document.querySelector('#button')
@@ -49,16 +82,47 @@
               const bname = document.querySelectorAll('.bname')
               const aname = document.querySelectorAll('.aname')
               chec.addEventListener('click',function(){
-                  for(i=0; i < aname.length; i++){
-                    bname[i].value = aname[i].value;
-                 
+                  
+                    for(i=0; i < aname.length; i++){
+
+                    if (chec.checked){
+                       bname[i].value = aname[i].value;
+
+                 } else{
+                      bname[i].value = '';
+                 }
+                          
                   }
                   
               })
+            const chio = document.querySelectorAll('.chi')
+            chio.forEach(function(evt) {
+            
+             evt.addEventListener('click',function(){
+            chio.forEach(function(ee){
+             ee.style.backgroundColor = ''
+             })
+             evt.style.backgroundColor = 'aqua'
+                       
+                       
+                  })
+                  
+                
+
+                 
+
+              })
+
+
+              
+             
+              
+
 
       </script>
       <!-- // 1단계 
       // 신청 버튼 누르면 input의 글씨가 아래에 쌓인다
+
      
         
       // 2단계 
@@ -66,6 +130,10 @@
      
       // 3단계
       // 메뉴가 여러개일 때 선택한 메뉴만 특이하게 보이게
+
+      
+
+
        
       // 4단계
       // 썸네일 클릭 또는 mouseover 시 큰 그림 변경 및 유지
