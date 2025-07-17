@@ -9,13 +9,17 @@ public class ExtendsExam {
 		     child.printName();
 		     
 		     System.out.println(child.getName() );
+		     
+		     System.out.println( "child.name:"+child.name);
 		    
+		     System.out.println("child.getName():"+child.getName() );
 		     child.setName("바뀐 이름");
 		     
 		     System.out.println(child.getName() );
 		     
 		// Child를 생성해서
 		// printName 실행
+		     
 
 	}
 
