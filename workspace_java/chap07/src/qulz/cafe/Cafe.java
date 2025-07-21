@@ -2,7 +2,9 @@ package qulz.cafe;
 
 public class Cafe {
 
-	 
+	 Cafe(){
+		 super();
+	 }
 	
  	 
 	
@@ -69,6 +71,9 @@ public class Cafe {
     void soso() {
     	System.out.println("서빙 중입니다");
     }
+   
+    
+    
 
 
 
