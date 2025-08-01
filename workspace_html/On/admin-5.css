@@ -1,0 +1,145 @@
+body {
+  margin: 0;
+  font-family: 'Noto Sans KR', sans-serif;
+}
+
+.admin5-wrapper {
+  display: flex;
+  height: 100vh;
+}
+
+/* ✅ 사이드바 스타일 (관리자모드1-1 그대로) */
+.sidebar {
+  width: 200px;
+  background-color: white;
+  border-right: 1px solid #e1e1e1;
+}
+
+.admin-mode {
+  background-color: red;
+  color: white;
+  text-align: center;
+  padding: 15px 0;
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.side-nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.side-nav li {
+  border-bottom: 1px solid #ddd;
+}
+
+.side-nav li a {
+  display: block;
+  padding: 12px 20px;
+  text-decoration: none;
+  color: #333;
+}
+
+.side-nav li.active a {
+  font-weight: bold;
+  background: #f0f0f0;
+}
+
+/* ✅ 오른쪽 메인 콘텐츠 영역 */
+.admin5-main-container {
+  flex: 1;
+  padding: 30px;
+  background: #fafafa;
+  overflow-y: auto;
+}
+
+.admin5-content .content-box {
+  background: white;
+  border: 1px solid #ddd;
+  padding: 20px;
+  margin-bottom: 40px;
+  border-radius: 8px;
+}
+
+.admin5-chart-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.admin5-title {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.admin5-control-bar button {
+  background: black;
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.chart-center {
+  max-width: 800px;
+  margin: 20px auto;
+}
+
+.admin5-flex {
+  display: flex;
+  gap: 40px;
+  margin-top: 20px;
+  flex-wrap: wrap;
+}
+
+.admin5-ranking {
+  flex: 1;
+  min-width: 280px;
+}
+
+.admin5-ranking-head {
+  font-weight: bold;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.admin5-ranking ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.admin5-ranking li {
+  padding: 8px;
+  margin-bottom: 8px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  font-size: 14px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.admin5-ranking li span {
+  font-weight: bold;
+  width: 20px;
+}
+
+.admin5-ranking li b {
+  margin-left: auto;
+  margin-right: 10px;
+}
+
+.admin5-ranking li em {
+  font-size: 12px;
+  color: #888;
+}
+
+/* 색상 클래스 */
+.color1 { background-color: #ffebeb; }
+.color2 { background-color: #e9f0ff; }
+.color3 { background-color: #eafff3; }
+.color4 { background-color: #fff8e0; }
