@@ -3,6 +3,9 @@ package sec01.exam08;
 public class StringExam {
 	public static void main(String[] args) {
 		
+		
+		System.gc();
+		
 		String s1 = "영일이삼사오육칠팔구삼사";
 		
 //		char c = 'a';
@@ -91,18 +94,18 @@ public class StringExam {
 	  String part2 = "Hello world";
 	  
 	 
-	  for(int i = 0; i<part2.length(); i++) {
-		  String a = part2.substring(0,);
-		  String a2 = part2.substring(1);
-		  String a3 = a2 +a;
-		  System.out.println(a3);
-		  part2= a3;
-//		  String b = part2.substring(i);
-		  
-	  }
-	  
-	  
-	  
+//	  for(int i = 0; i<part2.length(); i++) {
+//		  String a = part2.substring(0,);
+//		  String a2 = part2.substring(1);
+//		  String a3 = a2 +a;
+//		  System.out.println(a3);
+//		  part2= a3;
+////		  String b = part2.substring(i);
+//		  
+//	  }
+//	  
+//	  
+//	  
 	  
 	  
 	  //문제3 마스킹
@@ -121,6 +124,46 @@ public class StringExam {
 	  //키 query의 값이 검색어
 	  //검색어만 출력
 	  
+	  
+	  String s5 = "글씨    중간공백         ";
+	  System.out.println("["+s5+"]");
+	  System.out.println("["+s5.trim()+"]");
+	  
+	  
+	  
+	  String menu = "김밥,라면,돈까스,제육덮밥";
+	  String[] menus = menu.split(",");
+	  for(String m : menus) {
+		  System.out.println(m);
+	  }
+	  
+	  String url = "blog.naver.com";
+	  // split 정규 표현식을 사용(String 아님에 주의)
+	  // .은 정규 표현식에서 사용하는 의미있는 예약어라서 
+	  // 문자.으로 인식하지 않는다 
+//	  String[] urls = url.split(".");
+//	  String[] urls = url.split("\\."); // .을 표현하는 방법 1
+	  String[] urls = url.split("[.]"); // .을 표현하는 방법 2
+	 
+	  System.out.println(urls.length);
+	  
+	  String a = "a";
+	  a += "b";
+	  a = a + "c";
+	  
+	  // StringBuffer
+	  // 메모리를 효율적으로 사용한다
+	  // StringBuilder보다 쪼끔 느림
+	  // 스레드에 안전하다(Thread-safe)
+	  StringBuffer sb =new StringBuffer("a");
+	  sb.append("b");
+	  sb.append("c");
+	  String d = sb.toString();
+	  
+	  // 쓰레드에 안전하지 않다
+	  StringBuilder sbb = new StringBuilder("a");
+	  sbb.append("b");
+	  String d2 = sbb.toString();
 //	  String a7 = ssn.substring(7,8);
 //	  if(a7 != 1) {
 //	  System.out.println(a7);
