@@ -13,6 +13,17 @@ public class RequestServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		
+		
+		
+
+		// 요청 할 때 한글 깨짐 방지
+		response.setCharacterEncoding("utf-8;");
+		
+		//응답 할 때 한글 깨짐 방지
+		response.setContentType("text/html;charset=utf-8;");
+		
+		
 		System.out.println("/req doGet 실행");
 
 		// getParameter
@@ -62,7 +73,7 @@ public class RequestServlet extends HttpServlet {
 		
 		System.out.println("num2:" + request.getParameter("num2"));
 		
-		response.getWriter().println("{\"k\":123}");s
+		response.getWriter().println("{\"k\":123}");
 	}
 
 }
