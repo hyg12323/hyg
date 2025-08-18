@@ -2708,7 +2708,24 @@ left outer join dept d on e.deptno = d.deptno
 
 order by dname desc; 
   where e.deptno = 10 and job (select deptno from emp where job    
+  
+  
       
+  create table tbl_todo (
+  tno number primary key,
+  title varchar2(4000) not null,
+  dueDate date,
+  finished number(1) 
+--  default 0
+  );
+  select * from tbl_todo;
+  
+  create sequence seq_tbl_todo;
+  
+  
+  insert into tbl_todo (tno, title, duedate, finished)
+  values (seq_tbl_todo.nextval,'연습1',to_date( '2025-08-19','yyyy-mm-dd'), 0);
+  
   
   
   

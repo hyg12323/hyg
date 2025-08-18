@@ -1,6 +1,8 @@
 package sec01.exam01;
 
 import java.io.IOException;
+import java.io.PrintWriter;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -10,11 +12,15 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet("/qulz/login")
 public class loginSevlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
+    
+    
 
    
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+    	
+    	
 
         System.out.println("login 실행");
         request.getRequestDispatcher("/qulz/login.html").forward(request, response);
@@ -22,10 +28,15 @@ public class loginSevlet extends HttpServlet {
         
     }
 
-    
+    @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
+    	// 요청 할 때 한글 깨짐 방지
+		response.setCharacterEncoding("utf-8;");
+		
+		//응답 할 때 한글 깨짐 방지
+		response.setContentType("text/html;charset=utf-8;");
        
 
         String id = request.getParameter("id1");
@@ -34,10 +45,17 @@ public class loginSevlet extends HttpServlet {
         System.out.println("login 실행 post");
 
         try {
+//        	response.getWriter()
+        	 PrintWriter out = response.getWriter() ;
+        	
+        	
 //        	int n1 = Integer.parseInt(id);
 //            int n2 = Integer.parseInt(pw);
               if(id == ""|| pw =="") {
-            	  System.out.println("id 또는 비밀번호 확인바랍니다");
+            	  out.println("id 또는 비밀번호 확인바랍니다");
+            	 System.out.println("id 또는 비밀번호 확인바랍니다");
+            	  
+            	  
 //            	  System.out.println("비번"+pw);
               }
               else {
@@ -58,6 +76,6 @@ public class loginSevlet extends HttpServlet {
         }
 
    
-        response.sendRedirect(request.getContextPath() + "/qulz/login.html");
+//        response.sendRedirect(request.getContextPath() + "/qulz/login.html");
     }
 }
