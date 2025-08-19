@@ -2726,9 +2726,18 @@ order by dname desc;
   insert into tbl_todo (tno, title, duedate, finished)
   values (seq_tbl_todo.nextval,'연습1',to_date( '2025-08-19','yyyy-mm-dd'), 0);
   
+  delete tbl_todo
+  where tno = 21;
   
   
+  select * from tbl_todo
+  where tno = 22;
   
+  update tbl_todo
+  set title = '바꾸기',
+  duedate = '2025-01-01',
+  finished = 1
+  where tno = 40;
   
-  
+  commit;
 

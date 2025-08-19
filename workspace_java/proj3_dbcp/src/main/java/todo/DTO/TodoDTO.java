@@ -9,6 +9,8 @@ public class TodoDTO {
 	private String title; // 할일
 	private Date duedate; // 마감일
 	private int finished; // 완료 여부
+	
+	
 	public int getTno() {
 		return tno;
 	}
