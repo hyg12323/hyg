@@ -2741,3 +2741,16 @@ order by dname desc;
   
   commit;
 
+  select * from emp2;
+  
+  create table emp2
+  as select * from emp;
+  
+  select * from emp2;
+  
+  select * from emp2
+  where empno = 7369;
+  
+  
+  
+  

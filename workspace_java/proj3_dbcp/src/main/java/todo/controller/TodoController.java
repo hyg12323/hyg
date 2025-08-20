@@ -55,7 +55,7 @@ public class TodoController extends HttpServlet {
         		out.println("<br>duedate:"+todoDTO2.getDuedate());
         		out.println("<br>finished:"+todoDTO2.getFinished());
         		out.println("</div>");
-        		out.print("<a href ='modify?tno="+ wtodoDTO2.getTno()+"'><button>수정</button></a>");
+        		out.print("<a href ='modify?tno="+ todoDTO2.getTno()+"'><button>수정</button></a>");
         		
         		
         	}
