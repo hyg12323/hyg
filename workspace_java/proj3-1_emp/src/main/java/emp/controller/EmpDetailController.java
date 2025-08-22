@@ -12,66 +12,69 @@ import javax.servlet.http.HttpServletResponse;
 import emp.dto.EmpDTO;
 import emp.service.EmpService;
 
-
 @WebServlet("/detail")
 public class EmpDetailController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-    
-	
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	   System.out.println("/detail doGet 실행: 한명의 상세 정보만 조회" );
-	   request.setCharacterEncoding("utf-8");
-       response.setContentType("text/html;charset=utf-8");
-	
-	   
-	   // string으로 받고 -> if null != 라면 int 변환
-	   // 파라메터 empno를 int로 형변환
-	   int empno = 0;
-	   try {
-	
-		   String sEmpno = request.getParameter("empno");
-		   if(sEmpno != null) {
-			 empno =  Integer.parseInt(sEmpno);
-		   }
-		   
-	   }catch (Exception e) {
-		   e.printStackTrace();
-	   }
-	   
-	   EmpDTO empDTO = new EmpDTO();
-	   empDTO.setEmpno(empno);
-	   
-	   //DB 다녀와서 출력하기
-	   try {
-		   
-		   EmpService empService = new EmpService();
-         EmpDTO empDTO2 = empService.getOneEmp(empDTO);	
-         
-         PrintWriter out = response.getWriter();
-         
-//         System.out.println(empno);
-         out.println("<table border=1>");
-         out.println("  <tr><td>empno</td><td>"+ empDTO2.getEmpno()+ "</td>");
-         out.println("  <tr><td>ename</td><td>"+ empDTO2.getEname()+ "</td>");
-         out.println("  <tr><td>job</td><td>"+ empDTO2.getJob()+ "</td>");
-         out.println("  <tr><td>mar</td><td>"+ empDTO2.getMgr()+ "</td>");
-         out.println("  <tr><td>hiredate</td><td>"+ empDTO2.getHiredate()+ "</td>");
-         out.println("  <tr><td>sal</td><td>"+ empDTO2.getSal()+ "</td>");
-         out.println("  <tr><td>comm</td><td>"+ empDTO2.getComm()+ "</td>");
-         out.println("  <tr><td>deptno</td><td>"+ empDTO2.getDeptno()+ "</td>");
-         out.println("</table>");
-		   
-         out.println("<form method='post' action='remove'>");
-         
-         out.println("  <input type ='hidden' name = 'empno' value='"+ empDTO2.getEmpno() +"'>");
-         out.println("  <input type ='submit' value='삭제'>");
-         out.println("</form>");
-	   }catch(Exception e) {
-		   e.printStackTrace();
-	   }
-	   
-	}
 
-	
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		System.out.println("/detail doGet 실행: 한명의 상세 정보만 조회");
+		request.setCharacterEncoding("utf-8");
+		response.setContentType("text/html;charset=utf-8");
+
+		// string으로 받고 -> if null != 라면 int 변환
+		// 파라메터 empno를 int로 형변환
+		int empno = 0;
+		try {
+
+			String sEmpno = request.getParameter("empno");
+			if (sEmpno != null) {
+				empno = Integer.parseInt(sEmpno);
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		EmpDTO empDTO = new EmpDTO();
+		empDTO.setEmpno(empno);
+
+		// DB 다녀와서 출력하기
+		try {
+
+			EmpService empService = new EmpService();
+			EmpDTO empDTO2 = empService.getOneEmp(empDTO);
+
+			PrintWriter out = response.getWriter();
+
+//         System.out.println(empno);
+			out.println("<table border=1>");
+			out.println("  <tr><td>empno</td><td>" + empDTO2.getEmpno() + "</td>");
+			out.println("  <tr><td>ename</td><td>" + empDTO2.getEname() + "</td>");
+			out.println("  <tr><td>job</td><td>" + empDTO2.getJob() + "</td>");
+			out.println("  <tr><td>mar</td><td>" + empDTO2.getMgr() + "</td>");
+			out.println("  <tr><td>hiredate</td><td>" + empDTO2.getHiredate() + "</td>");
+			out.println("  <tr><td>sal</td><td>" + empDTO2.getSal() + "</td>");
+			out.println("  <tr><td>comm</td><td>" + empDTO2.getComm() + "</td>");
+			out.println("  <tr><td>deptno</td><td>" + empDTO2.getDeptno() + "</td>");
+			out.println("</table>");
+
+			out.println("<form method='post' action='remove'>");
+
+			out.println("  <input type ='hidden' name = 'empno' value='" + empDTO2.getEmpno() + "'>");
+			out.println("  <input type ='submit' value='삭제'>");
+			out.println("</form>");
+
+			out.println("<form method='get' action='edit'>");
+
+			out.println("  <input type ='hidden' name = 'empno' value='" + empDTO2.getEmpno() + "'>");
+			out.println("  <input type ='submit' value='수정'>");
+			out.println("</form>");
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+	}
 
 }
