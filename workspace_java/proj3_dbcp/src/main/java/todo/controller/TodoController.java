@@ -42,12 +42,8 @@ public class TodoController extends HttpServlet {
         		todoDTO.setTno(tno);
         		
         		// db에서 개별 조회
-        		TodoDTO todoDTO2 =todoService.getTodo(todoDTO);
-        		
-        		
-        		
+        		TodoDTO todoDTO2 =todoService.getTodo(todoDTO)
 //        		out.println(executeQuery("select tno"));
-        		
         		// 화면에 표시 
         		out.println("<div>");
         		out.println("<br>tno:"+todoDTO2.getTno());

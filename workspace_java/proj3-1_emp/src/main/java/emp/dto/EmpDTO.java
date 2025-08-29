@@ -10,6 +10,8 @@ public class EmpDTO {
    private Date hiredate;
    private int sal;
    private Integer comm;
+   
+   
    public Integer getEmpno() {
 	return empno;
 }
