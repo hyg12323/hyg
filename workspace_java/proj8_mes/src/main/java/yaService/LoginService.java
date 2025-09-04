@@ -1,12 +1,13 @@
 package yaService;
 
-import yaDAO.UsersDAO;
-import yaDTO.UsersDTO;
+import yaDAO.LoginDAO;
+import yaDTO.UserDTO;
 
 public class LoginService {
-    private UsersDAO usersDAO = new UsersDAO();
+    private final LoginDAO loginDAO = new LoginDAO();
 
-    public UsersDTO login(String username, String password) {
-        return usersDAO.login(username, password);
+    public UserDTO login(int userId, String nameAsPassword) {
+        if (userId <= 0 || nameAsPassword == null) return null;
+        return loginDAO.login(userId, nameAsPassword);
     }
 }
